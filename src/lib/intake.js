@@ -1,16 +1,8 @@
-import { FORMSPREE_ENDPOINT as DEFAULT_FORMSPREE_ENDPOINT } from "../config.js";
-
-// Defaults to the live form pointed at info@thewholenessplace.com; override
-// with VITE_FORMSPREE_ENDPOINT if the form ever changes. No backend required.
-const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || DEFAULT_FORMSPREE_ENDPOINT;
-
+// The form that delivers intake + email-capture records to
+// info@thewholenessplace.com. Hardcoded per the live Formspree form.
 async function postRecord(record) {
-  if (!FORMSPREE_ENDPOINT) {
-    console.warn("VITE_FORMSPREE_ENDPOINT is not configured — intake record was not sent.", record);
-    return { ok: false };
-  }
   try {
-    const res = await fetch(FORMSPREE_ENDPOINT, {
+    const res = await fetch("https://formspree.io/f/meeyezrz", {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify(record),
