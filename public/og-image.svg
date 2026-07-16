@@ -1,0 +1,17 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="60%" y2="100%">
+      <stop offset="0%" stop-color="#263f60" />
+      <stop offset="130%" stop-color="#1f628e" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <text x="90" y="150" font-family="'Hurricane', cursive" font-size="46" fill="#bd9558">put yourself back together</text>
+  <text x="90" y="150" font-family="'Hurricane', cursive" font-size="46" fill="#bd9558" opacity="0"> </text>
+  <text x="88" y="270" font-family="'Playfair Display', Georgia, serif" font-size="64" font-weight="600" fill="#fffff6">
+    <tspan x="88" dy="0">Which R does your</tspan>
+    <tspan x="88" dy="76">body need right now?</tspan>
+  </text>
+  <rect x="90" y="392" width="64" height="4" fill="#bd9558" />
+  <text x="90" y="440" font-family="Lato, sans-serif" font-size="24" font-weight="300" fill="#baebff">The Wholeness Place · Toluca Lake, CA</text>
+</svg>
