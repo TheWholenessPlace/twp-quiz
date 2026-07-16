@@ -52,6 +52,8 @@ export function buildIntakeRecord({
   birthDate,
   birthTime,
   birthPlace,
+  fullName,
+  phone,
   email,
 }) {
   return {
@@ -69,6 +71,8 @@ export function buildIntakeRecord({
     birth_date: birthDate,
     birth_time: birthTime,
     birth_city: birthPlace,
+    full_name: fullName || "",
+    phone: phone || "",
     email: email || "",
   };
 }
