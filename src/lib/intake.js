@@ -1,6 +1,8 @@
-// Owner sets this after creating a form at https://formspree.io pointed at
-// info@thewholenessplace.com — see README for setup steps. No backend required.
-const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || "";
+import { FORMSPREE_ENDPOINT as DEFAULT_FORMSPREE_ENDPOINT } from "../config.js";
+
+// Defaults to the live form pointed at info@thewholenessplace.com; override
+// with VITE_FORMSPREE_ENDPOINT if the form ever changes. No backend required.
+const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || DEFAULT_FORMSPREE_ENDPOINT;
 
 async function postRecord(record) {
   if (!FORMSPREE_ENDPOINT) {

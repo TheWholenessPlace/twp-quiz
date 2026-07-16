@@ -197,3 +197,7 @@ export function getBookingLink(modality, bodyType) {
 
 export const EBOOK_URL = "https://thewholenessplace.store/shop/268362d4-938a-43ce-8225-cafb78e62462";
 export const INTAKE_DELIVERY_EMAIL = "info@thewholenessplace.com";
+
+// Formspree form delivering intake + email-capture records to INTAKE_DELIVERY_EMAIL.
+// Override at deploy time with VITE_FORMSPREE_ENDPOINT if the form ever changes.
+export const FORMSPREE_ENDPOINT = "https://formspree.io/f/meeyezrz";
