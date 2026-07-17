@@ -47,6 +47,18 @@ send is retried once in the background, per spec.
 Add `?debug=1` to the URL to reveal the score tally on the result screen.
 It's hidden by default.
 
+### Direct entry
+
+`?start=bodywork`, `?start=mindwork`, or `?start=soulwork` skips the
+welcome, quiz, and result screens and lands directly on that modality's
+session-detail screen — useful for linking straight to a specific offer
+(e.g. from an ad or a bio link) without making her take the quiz first.
+She still goes through the normal intake, including the required
+name/email/phone, to booking. Since there's no quiz result on this path,
+`quiz_result` is sent as `"direct"` in the Formspree record instead of an
+R name, so direct bookings are easy to tell apart from quiz bookings. Any
+other or missing `?start=` value behaves exactly like the plain URL.
+
 ## Deployment
 
 This is a static Vite build — deploy to Vercel or Netlify:
