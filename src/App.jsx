@@ -48,7 +48,7 @@ export default function TWPQuiz() {
   useEffect(() => {
     const l = document.createElement("link");
     l.rel = "stylesheet";
-    l.href = "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Lato:wght@300;400;700&family=Hurricane&display=swap";
+    l.href = "https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@300;400;700&family=Hurricane&display=swap";
     document.head.appendChild(l);
     return () => document.head.removeChild(l);
   }, []);
@@ -119,7 +119,7 @@ export default function TWPQuiz() {
         ? `linear-gradient(175deg, ${C.navy} 0%, ${C.ocean} 130%)`
         : `linear-gradient(180deg, ${C.ice} 0%, ${C.cream} 34%)`,
       color: dark ? C.cream : C.navy,
-      fontFamily: "'Lato', sans-serif",
+      fontFamily: "'Josefin Slab', serif",
       display: "flex", flexDirection: "column", alignItems: "center",
       padding: "0 22px 48px",
       transition: "background .4s ease",
@@ -127,20 +127,20 @@ export default function TWPQuiz() {
     wrap: { width: "100%", maxWidth: 420, opacity: fade ? 1 : 0, transform: fade ? "translateY(0)" : "translateY(6px)", transition: "opacity .22s ease, transform .22s ease" },
     eyebrow: { fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: dark ? C.lightBlue : C.ocean, fontWeight: 700, margin: "38px 0 6px" },
     script: { fontFamily: "'Hurricane', cursive", fontSize: 32, color: C.gold, margin: "0 0 4px", lineHeight: 1.1 },
-    h1: { fontFamily: "'Playfair Display', serif", fontSize: 32, lineHeight: 1.2, fontWeight: 600, margin: "0 0 14px", color: dark ? C.cream : C.navy },
-    h2: { fontFamily: "'Playfair Display', serif", fontSize: 24, lineHeight: 1.3, fontWeight: 600, margin: "0 0 20px", color: C.navy },
+    h1: { fontFamily: "'Josefin Slab', serif", fontSize: 32, lineHeight: 1.2, fontWeight: 700, margin: "0 0 14px", color: dark ? C.cream : C.navy },
+    h2: { fontFamily: "'Josefin Slab', serif", fontSize: 24, lineHeight: 1.3, fontWeight: 700, margin: "0 0 20px", color: C.navy },
     p: { fontSize: 16, lineHeight: 1.65, fontWeight: 300, margin: "0 0 14px" },
     fine: { fontSize: 12.5, lineHeight: 1.5, fontWeight: 300, color: dark ? C.lightBlue : C.brown },
-    btn: { display: "block", width: "100%", textAlign: "left", background: "#fff", border: `1px solid ${C.sky}`, borderLeft: `4px solid ${C.sky}`, borderRadius: 14, padding: "16px 18px", fontSize: 15.5, fontFamily: "'Lato', sans-serif", fontWeight: 400, color: C.navy, marginBottom: 12, cursor: "pointer" },
+    btn: { display: "block", width: "100%", textAlign: "left", background: "#fff", border: `1px solid ${C.sky}`, borderLeft: `4px solid ${C.sky}`, borderRadius: 14, padding: "16px 18px", fontSize: 15.5, fontFamily: "'Josefin Slab', serif", fontWeight: 700, color: C.navy, marginBottom: 12, cursor: "pointer" },
     primary: {
       display: "block", width: "100%", textAlign: "center",
       background: dark ? C.gold : C.navy,
       color: dark ? C.navy : C.cream,
       border: "none", borderRadius: 14, padding: "16px 18px",
-      fontSize: 15.5, fontWeight: 700, letterSpacing: "0.02em", cursor: "pointer", marginTop: 8,
+      fontSize: 15.5, fontFamily: "'Josefin Slab', serif", fontWeight: 700, letterSpacing: "0.02em", cursor: "pointer", marginTop: 8,
     },
-    ghost: { display: "block", width: "100%", textAlign: "center", background: "transparent", color: dark ? C.lightBlue : C.ocean, border: "none", padding: "14px", fontSize: 14, cursor: "pointer" },
-    input: { width: "100%", boxSizing: "border-box", background: "#fff", border: `1px solid ${C.sky}`, borderRadius: 12, padding: "14px 16px", fontSize: 15.5, fontFamily: "'Lato', sans-serif", color: C.navy, marginBottom: 12, outline: "none" },
+    ghost: { display: "block", width: "100%", textAlign: "center", background: "transparent", color: dark ? C.lightBlue : C.ocean, border: "none", padding: "14px", fontSize: 14, fontFamily: "'Josefin Slab', serif", fontWeight: 700, cursor: "pointer" },
+    input: { width: "100%", boxSizing: "border-box", background: "#fff", border: `1px solid ${C.sky}`, borderRadius: 12, padding: "14px 16px", fontSize: 15.5, fontFamily: "'Josefin Slab', serif", color: C.navy, marginBottom: 12, outline: "none" },
     goldRule: { width: 44, height: 3, background: C.gold, border: "none", margin: "0 0 20px" },
     dots: { display: "flex", gap: 7, margin: "40px 0 26px" },
     card: { background: dark ? C.cream : "#fff", color: C.navy, border: `1px solid ${dark ? C.gold : C.lightBlue}`, borderRadius: 16, padding: "20px 18px", margin: "20px 0 8px" },
@@ -169,8 +169,8 @@ export default function TWPQuiz() {
       <div style={S.wrap}>
 
         {screen === "welcome" && (<>
-          <div style={S.eyebrow}>the wholeness place</div>
-          <div style={S.script}>put yourself back together</div>
+          <div style={{ ...S.eyebrow, fontSize: 15 }}>the wholeness place</div>
+          <div style={S.script}>Put yourself back together</div>
           <h1 style={S.h1}>Which R does your body need right now?</h1>
           <hr style={S.goldRule} />
           <p style={S.p}>Not a spa. Not therapy. This is where a woman comes to put herself back together — and it starts with knowing what you actually need.</p>
