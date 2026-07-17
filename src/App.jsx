@@ -17,14 +17,20 @@ import {
 } from "./config.js";
 import { sendRecord, sendEmailCapture, buildIntakeRecord } from "./lib/intake.js";
 
+const DIRECT_MODALITIES = ["bodywork", "mindwork", "soulwork"];
+
 export default function TWPQuiz() {
-  const [screen, setScreen] = useState("welcome");
+  const [directStart] = useState(() => {
+    const s = new URLSearchParams(window.location.search).get("start");
+    return DIRECT_MODALITIES.includes(s) ? s : null;
+  });
+  const [screen, setScreen] = useState(() => (directStart ? "detail" : "welcome"));
   const [qi, setQi] = useState(0);
   const [scores, setScores] = useState({ reset: 0, reconnect: 0, regulate: 0, restore: 0 });
   const [shuffled, setShuffled] = useState(() => QUESTIONS.map((q) => [...q.a].sort(() => Math.random() - 0.5)));
   const [email, setEmail] = useState("");
   const [emailSent, setEmailSent] = useState(false);
-  const [modality, setModality] = useState("");
+  const [modality, setModality] = useState(() => directStart || "");
   const [bodyType, setBodyType] = useState("");
   const [duration, setDuration] = useState("");
   const [carrying, setCarrying] = useState("");
@@ -62,10 +68,11 @@ export default function TWPQuiz() {
   const topR = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
   const R = RESULTS[topR];
   const dark = DARK_SCREENS.includes(screen);
+  const resultName = directStart ? "direct" : R.name;
 
   const handleEmailSubmit = () => {
     if (!email.includes("@")) return;
-    sendEmailCapture({ email, resultName: R.name, scores });
+    sendEmailCapture({ email, resultName, scores });
     window.open(EBOOK_URL, "_blank", "noopener,noreferrer");
     setEmailSent(true);
   };
@@ -73,7 +80,7 @@ export default function TWPQuiz() {
   const handleBooking = () => {
     const session = modality === "bodywork" ? bodyType : modality === "soulwork" ? format : "";
     const record = buildIntakeRecord({
-      resultName: R.name,
+      resultName,
       scores,
       modality,
       modalityTitle: MODALITIES[modality]?.title || modality,
