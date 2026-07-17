@@ -35,18 +35,9 @@ full record is posted to a no-backend form service (Formspree) that emails
 `info@thewholenessplace.com`, and the Square booking page opens at the same
 time. The email capture card does the same on a smaller record.
 
-To wire this up:
-
-1. Create a form at [formspree.io](https://formspree.io) pointed at
-   `info@thewholenessplace.com`.
-2. Copy the endpoint it gives you (`https://formspree.io/f/xxxxxxx`).
-3. Copy `.env.example` to `.env` and set `VITE_FORMSPREE_ENDPOINT` to that
-   URL (locally, and as an environment variable in Vercel/Netlify for
-   production).
-
-If `VITE_FORMSPREE_ENDPOINT` isn't set, the app still works end to end —
-it just logs a console warning instead of sending, and never blocks the
-booking redirect.
+The form endpoint (`https://formspree.io/f/meeyezrz`) is hardcoded in
+`src/lib/intake.js` (`postRecord`) — no setup needed to go live. To point
+at a different form later, edit that URL directly.
 
 Sends are fire-and-forget: the booking link opens immediately, and a failed
 send is retried once in the background, per spec.
@@ -64,8 +55,8 @@ This is a static Vite build — deploy to Vercel or Netlify:
 npm run build
 ```
 
-Output goes to `dist/`. Set `VITE_FORMSPREE_ENDPOINT` in the host's
-environment variables before building/deploying.
+Output goes to `dist/`. The Formspree endpoint is already baked into
+`src/lib/intake.js` — no environment variables required.
 
 ## Open Graph
 

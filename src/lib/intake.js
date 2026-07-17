@@ -1,14 +1,8 @@
-// Owner sets this after creating a form at https://formspree.io pointed at
-// info@thewholenessplace.com — see README for setup steps. No backend required.
-const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || "";
-
+// The form that delivers intake + email-capture records to
+// info@thewholenessplace.com. Hardcoded per the live Formspree form.
 async function postRecord(record) {
-  if (!FORMSPREE_ENDPOINT) {
-    console.warn("VITE_FORMSPREE_ENDPOINT is not configured — intake record was not sent.", record);
-    return { ok: false };
-  }
   try {
-    const res = await fetch(FORMSPREE_ENDPOINT, {
+    const res = await fetch("https://formspree.io/f/meeyezrz", {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify(record),
@@ -58,6 +52,8 @@ export function buildIntakeRecord({
   birthDate,
   birthTime,
   birthPlace,
+  fullName,
+  phone,
   email,
 }) {
   return {
@@ -75,6 +71,8 @@ export function buildIntakeRecord({
     birth_date: birthDate,
     birth_time: birthTime,
     birth_city: birthPlace,
+    full_name: fullName || "",
+    phone: phone || "",
     email: email || "",
   };
 }

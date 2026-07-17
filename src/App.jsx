@@ -34,6 +34,8 @@ export default function TWPQuiz() {
   const [birthDate, setBirthDate] = useState("");
   const [birthTime, setBirthTime] = useState("");
   const [birthPlace, setBirthPlace] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [phone, setPhone] = useState("");
   const [fade, setFade] = useState(true);
   const [isDebug] = useState(() => new URLSearchParams(window.location.search).get("debug") === "1");
 
@@ -83,6 +85,8 @@ export default function TWPQuiz() {
       birthDate,
       birthTime,
       birthPlace,
+      fullName,
+      phone,
       email,
     });
     sendRecord(record);
@@ -98,6 +102,7 @@ export default function TWPQuiz() {
     setModality(""); setBodyType(""); setDuration("");
     setCarrying(""); setWant(""); setBodyNotes(""); setFormat("");
     setBirthDate(""); setBirthTime(""); setBirthPlace("");
+    setFullName(""); setPhone("");
   };
 
   const S = {
@@ -272,7 +277,12 @@ export default function TWPQuiz() {
           <input style={S.input} placeholder="Birth time (if you happen to know it)" value={birthTime} onChange={(e) => setBirthTime(e.target.value)} />
           <input style={S.input} placeholder="City you were born in (optional)" value={birthPlace} onChange={(e) => setBirthPlace(e.target.value)} />
 
-          <button style={{ ...S.primary, opacity: want && (FORMATS[modality].fixed || format) ? 1 : 0.45 }} disabled={!(want && (FORMATS[modality].fixed || format))} onClick={() => go("done")}>
+          <p style={{ ...S.p, fontWeight: 700, margin: "18px 0 8px" }}>Last thing — how do I reach you?</p>
+          <input style={S.input} placeholder="Your name" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+          <input style={S.input} type="email" placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input style={S.input} type="tel" placeholder="Your phone number" value={phone} onChange={(e) => setPhone(e.target.value)} />
+
+          <button style={{ ...S.primary, opacity: want && (FORMATS[modality].fixed || format) && fullName.trim() && email.includes("@") && phone.trim() ? 1 : 0.45 }} disabled={!(want && (FORMATS[modality].fixed || format) && fullName.trim() && email.includes("@") && phone.trim())} onClick={() => go("done")}>
             Continue to booking
           </button>
         </>)}
