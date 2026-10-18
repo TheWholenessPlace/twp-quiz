@@ -17,6 +17,14 @@ import {
 } from "./config.js";
 import { sendRecord, sendEmailCapture, buildIntakeRecord } from "./lib/intake.js";
 
+const VAGARO_STEPS = [
+  "Find your session on the list and tap Request.",
+  "Choose the date and time that work for you.",
+  "Vagaro will ask you to log in. If you are new to Vagaro, tap Sign Up Now and create a free account with your name, email, phone number, and a password. This is a one time step, and it is how Vagaro sends your confirmation and reminders.",
+  "Pay your deposit to hold your appointment.",
+  "Watch for your confirmation by email or text.",
+];
+
 const DIRECT_MODALITIES = ["bodywork", "mindwork", "soulwork"];
 
 export default function TWPQuiz() {
@@ -173,8 +181,8 @@ export default function TWPQuiz() {
           <div style={S.script}>Put yourself back together</div>
           <h1 style={S.h1}>Which R does your body need right now?</h1>
           <hr style={S.goldRule} />
-          <p style={S.p}>Not a spa. Not therapy. This is where a woman comes to put herself back together — and it starts with knowing what you actually need.</p>
-          <p style={{ ...S.p, color: C.lightBlue }}>Seven questions. Two minutes. Answer with your body, not your calendar.</p>
+          <p style={S.p}>Not a spa. Not therapy. This is where a woman comes to put herself back together, and it starts with knowing what you actually need.</p>
+          <p style={{ ...S.p, color: C.lightBlue }}>There are seven questions, and it takes about two minutes. Answer with how your body feels, not with what your schedule says.</p>
           <button style={S.primary} onClick={() => go("quiz")}>Start</button>
         </>)}
 
@@ -195,18 +203,18 @@ export default function TWPQuiz() {
 
           <div style={S.card}>
             <p style={{ ...S.p, fontWeight: 700, marginBottom: 6 }}>Take your result with you.</p>
-            <p style={{ ...S.p, fontSize: 14.5, marginBottom: 14 }}>Get your full {R.name} guide + the free ebook, <em>Coming Home to Yourself</em>.</p>
+            <p style={{ ...S.p, fontSize: 14.5, marginBottom: 14 }}>Get your full {R.name} guide and the free ebook, <em>Coming Home to Yourself</em>.</p>
             {!emailSent ? (<>
               <input style={S.input} type="email" placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} />
               <button style={{ ...S.primary, marginTop: 0, background: C.navy, color: C.cream }} onClick={handleEmailSubmit}>Send it to me</button>
             </>) : (
-              <p style={{ ...S.p, color: C.ocean, fontWeight: 700, margin: 0 }}>Sent. Check your inbox. ✳</p>
+              <p style={{ ...S.p, color: C.ocean, fontWeight: 700, margin: 0 }}>It has been sent. Please check your inbox.</p>
             )}
           </div>
 
           <button style={S.primary} onClick={() => go("how")}>Choose your session</button>
           {isDebug && (
-            <p style={{ ...S.fine, textAlign: "center", marginTop: 14 }}>Your tally — Reset {scores.reset} · Reconnect {scores.reconnect} · Regulate {scores.regulate} · Restore {scores.restore}</p>
+            <p style={{ ...S.fine, textAlign: "center", marginTop: 14 }}>Your tally: Reset {scores.reset} · Reconnect {scores.reconnect} · Regulate {scores.regulate} · Restore {scores.restore}</p>
           )}
         </>)}
 
@@ -215,16 +223,16 @@ export default function TWPQuiz() {
           <h2 style={S.h2}>Choose how we get there.</h2>
           {Object.entries(MODALITIES).map(([key, m]) => (
             <Pill key={key} label={m.title} sub={m.line} active={modality === key}
-              badge={R.rec === key ? "where most start" : null}
+              badge={R.rec === key ? "Where most women start" : null}
               onClick={() => { setModality(key); setBodyType(""); setDuration(""); }} />
           ))}
-          <p style={{ ...S.fine, marginTop: 8 }}>Most women with a {R.name} result start with {MODALITIES[R.rec].title.toLowerCase()} — but you know yourself.</p>
+          <p style={{ ...S.fine, marginTop: 8 }}>Most women with a {R.name} result start with {MODALITIES[R.rec].title.toLowerCase()}, but you know yourself best.</p>
           <button style={{ ...S.primary, opacity: modality ? 1 : 0.45 }} disabled={!modality} onClick={() => go("detail")}>Continue</button>
         </>)}
 
         {screen === "detail" && modality === "bodywork" && (<>
           <div style={S.eyebrow}>bodywork</div>
-          <h2 style={S.h2}>Which kind of hands does today call for?</h2>
+          <h2 style={S.h2}>Which type of massage do you want today?</h2>
           {BODYWORK_TYPES.map(([t, sub]) => (
             <Pill key={t} label={t} sub={sub} active={bodyType === t} onClick={() => { setBodyType(t); setDuration(""); }} />
           ))}
@@ -249,28 +257,28 @@ export default function TWPQuiz() {
 
         {screen === "detail" && modality === "soulwork" && (<>
           <div style={S.eyebrow}>soulwork</div>
-          <h2 style={S.h2}>Where should soul work find you?</h2>
+          <h2 style={S.h2}>Where would you like your soul work session?</h2>
           <p style={S.p}>{MODALITIES.soulwork.happens}</p>
           {SOUL_SETTINGS.map((f) => <Pill key={f} label={f} active={format === f} onClick={() => { setFormat(f); setDuration(""); }} />)}
           {format && (<>
             <p style={{ ...S.p, fontWeight: 700, margin: "18px 0 8px" }}>How much time does today need?</p>
             {SOUL_PRICING[format].map(([d, sub]) => <Pill key={d} label={d} sub={sub} active={duration === d} onClick={() => setDuration(d)} />)}
-            {format !== "Online" && <p style={S.fine}>Beyond my service radius, a small distance fee applies — confirmed at booking.</p>}
+            {format !== "Online" && <p style={S.fine}>A small distance fee applies outside my service area. I will confirm it with you when you book.</p>}
           </>)}
           <button style={{ ...S.primary, opacity: format && duration ? 1 : 0.45 }} disabled={!(format && duration)} onClick={() => go("intake")}>Continue</button>
         </>)}
 
         {screen === "intake" && (<>
           <div style={S.eyebrow}>before we begin</div>
-          <h2 style={S.h2}>Tell me where you're starting from.</h2>
+          <h2 style={S.h2}>Tell me where you are starting from.</h2>
 
           <p style={{ ...S.p, fontWeight: 700, marginBottom: 8 }}>What are you carrying right now?</p>
-          <textarea style={{ ...S.input, minHeight: 84, resize: "vertical" }} placeholder="Say it plainly. No one grades this." value={carrying} onChange={(e) => setCarrying(e.target.value)} />
+          <textarea style={{ ...S.input, minHeight: 84, resize: "vertical" }} placeholder="Say it plainly. There are no wrong answers." value={carrying} onChange={(e) => setCarrying(e.target.value)} />
 
           <p style={{ ...S.p, fontWeight: 700, margin: "10px 0 8px" }}>{PILLAR_QUESTIONS[modality].focus.label}</p>
           {PILLAR_QUESTIONS[modality].focus.options.map((w) => <Pill key={w} label={w} active={want === w} onClick={() => setWant(w)} />)}
 
-          <p style={{ ...S.p, fontWeight: 700, margin: "18px 0 8px" }}>Where we meet</p>
+          <p style={{ ...S.p, fontWeight: 700, margin: "18px 0 8px" }}>Where we will meet</p>
           <p style={{ ...S.p, color: C.ocean }}>{FORMATS[modality].fixed || format}</p>
 
           {PILLAR_QUESTIONS[modality].notes && (<>
@@ -278,13 +286,13 @@ export default function TWPQuiz() {
             <textarea style={{ ...S.input, minHeight: 64, resize: "vertical" }} placeholder={PILLAR_QUESTIONS[modality].notes.placeholder} value={bodyNotes} onChange={(e) => setBodyNotes(e.target.value)} />
           </>)}
 
-          <p style={{ ...S.p, fontWeight: 700, margin: "18px 0 4px" }}>Help me tailor your session</p>
-          <p style={{ ...S.fine, marginBottom: 10 }}>Your birthday — so I can celebrate you, and personalize your care. Time & city are optional; I use a whole-person approach to prepare for your session.</p>
+          <p style={{ ...S.p, fontWeight: 700, margin: "18px 0 4px" }}>Help me tailor your session.</p>
+          <p style={{ ...S.fine, marginBottom: 10 }}>I ask for your birthday so I can celebrate you and personalize your care. Your birth time and city are optional. I use a whole person approach to prepare for your session.</p>
           <input style={S.input} placeholder="Birthday" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} />
-          <input style={S.input} placeholder="Birth time (if you happen to know it)" value={birthTime} onChange={(e) => setBirthTime(e.target.value)} />
+          <input style={S.input} placeholder="Birth time (optional)" value={birthTime} onChange={(e) => setBirthTime(e.target.value)} />
           <input style={S.input} placeholder="City you were born in (optional)" value={birthPlace} onChange={(e) => setBirthPlace(e.target.value)} />
 
-          <p style={{ ...S.p, fontWeight: 700, margin: "18px 0 8px" }}>Last thing — how do I reach you?</p>
+          <p style={{ ...S.p, fontWeight: 700, margin: "18px 0 8px" }}>Last thing: how can I reach you?</p>
           <input style={S.input} placeholder="Your name" value={fullName} onChange={(e) => setFullName(e.target.value)} />
           <input style={S.input} type="email" placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} />
           <input style={S.input} type="tel" placeholder="Your phone number" value={phone} onChange={(e) => setPhone(e.target.value)} />
@@ -296,7 +304,7 @@ export default function TWPQuiz() {
 
         {screen === "done" && (<>
           <div style={S.eyebrow}>almost there</div>
-          <h1 style={S.h1}>Your session is waiting.</h1>
+          <h1 style={S.h1}>Your session is ready to book.</h1>
           <hr style={S.goldRule} />
           <div style={S.card}>
             <p style={{ ...S.p, margin: 0 }}>
@@ -305,8 +313,16 @@ export default function TWPQuiz() {
               <br /><span style={{ fontWeight: 300 }}>{FORMATS[modality]?.fixed || format}</span>
             </p>
           </div>
-          <p style={S.p}>You said you're carrying: <em>{carrying || "—"}</em></p>
-          <button style={S.primary} onClick={handleBooking}>Pick my time</button>
+          <p style={S.p}>You said you're carrying: <em>{carrying || "Nothing shared yet."}</em></p>
+          <div style={{ ...S.card, background: C.cream }}>
+            <p style={{ ...S.p, fontWeight: 700, marginBottom: 8 }}>How booking works on Vagaro</p>
+            <p style={{ ...S.p, fontSize: 14.5, marginBottom: 10 }}>I use Vagaro to schedule appointments. When you tap the button below, my Vagaro page opens in a new tab. Here is what to expect.</p>
+            <ol style={{ ...S.p, fontSize: 14.5, paddingLeft: 20, margin: "0 0 10px" }}>
+              {VAGARO_STEPS.map((step) => <li key={step} style={{ marginBottom: 6 }}>{step}</li>)}
+            </ol>
+            <p style={{ ...S.p, fontSize: 14.5, margin: 0 }}>Your answers from this page have already been sent to me, so you will not need to repeat them. If you get stuck, email info@thewholenessplace.com and I will help you book.</p>
+          </div>
+          <button style={S.primary} onClick={handleBooking}>Go to Vagaro and pick my time</button>
           <button style={S.ghost} onClick={resetAll}>
             Start over
           </button>
