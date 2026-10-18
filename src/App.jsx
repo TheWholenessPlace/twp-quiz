@@ -138,7 +138,7 @@ export default function TWPQuiz() {
     h1: { fontFamily: "'Josefin Slab', serif", fontSize: 32, lineHeight: 1.2, fontWeight: 700, margin: "0 0 14px", color: dark ? C.cream : C.navy },
     h2: { fontFamily: "'Josefin Slab', serif", fontSize: 24, lineHeight: 1.3, fontWeight: 700, margin: "0 0 20px", color: C.navy },
     p: { fontSize: 16, lineHeight: 1.65, fontWeight: 300, margin: "0 0 14px" },
-    fine: { fontSize: 12.5, lineHeight: 1.5, fontWeight: 300, color: dark ? C.lightBlue : C.brown },
+    fine: { fontSize: 13.5, lineHeight: 1.5, fontWeight: 400, color: dark ? C.lightBlue : C.brown },
     btn: { display: "block", width: "100%", textAlign: "left", background: "#fff", border: `1px solid ${C.sky}`, borderLeft: `4px solid ${C.sky}`, borderRadius: 14, padding: "16px 18px", fontSize: 15.5, fontFamily: "'Josefin Slab', serif", fontWeight: 700, color: C.navy, marginBottom: 12, cursor: "pointer" },
     primary: {
       display: "block", width: "100%", textAlign: "center",
@@ -168,7 +168,7 @@ export default function TWPQuiz() {
         {label}
         {badge && <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#fff", background: C.ocean, borderRadius: 8, padding: "3px 8px", marginLeft: 8, verticalAlign: "middle" }}>{badge}</span>}
       </span>
-      {sub && <span style={{ fontSize: 13.5, fontWeight: 300, color: C.ocean, display: "block", marginTop: 4, lineHeight: 1.45 }}>{sub}</span>}
+      {sub && <span style={{ fontSize: 15, fontWeight: 400, color: C.navy, display: "block", marginTop: 4, lineHeight: 1.45 }}>{sub}</span>}
     </button>
   );
 
