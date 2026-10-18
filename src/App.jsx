@@ -137,7 +137,7 @@ export default function TWPQuiz() {
     script: { fontFamily: "'Hurricane', cursive", fontSize: 32, color: C.gold, margin: "0 0 4px", lineHeight: 1.1 },
     h1: { fontFamily: "'Josefin Slab', serif", fontSize: 32, lineHeight: 1.2, fontWeight: 700, margin: "0 0 14px", color: dark ? C.cream : C.navy },
     h2: { fontFamily: "'Josefin Slab', serif", fontSize: 24, lineHeight: 1.3, fontWeight: 700, margin: "0 0 20px", color: C.navy },
-    p: { fontSize: 16, lineHeight: 1.65, fontWeight: 300, margin: "0 0 14px" },
+    p: { fontSize: 16, lineHeight: 1.65, fontWeight: 400, margin: "0 0 14px" },
     fine: { fontSize: 13.5, lineHeight: 1.5, fontWeight: 400, color: dark ? C.lightBlue : C.brown },
     btn: { display: "block", width: "100%", textAlign: "left", background: "#fff", border: `1px solid ${C.sky}`, borderLeft: `4px solid ${C.sky}`, borderRadius: 14, padding: "16px 18px", fontSize: 15.5, fontFamily: "'Josefin Slab', serif", fontWeight: 700, color: C.navy, marginBottom: 12, cursor: "pointer" },
     primary: {
@@ -308,17 +308,17 @@ export default function TWPQuiz() {
             <p style={{ ...S.p, margin: 0 }}>
               <strong>{MODALITIES[modality]?.title}</strong>
               {modality === "bodywork" ? <> · {bodyType}{duration && <> · {duration}</>}</> : <> · {duration}</>}
-              <br /><span style={{ fontWeight: 300 }}>{FORMATS[modality]?.fixed || format}</span>
+              <br /><span style={{ fontWeight: 400 }}>{FORMATS[modality]?.fixed || format}</span>
             </p>
           </div>
           <p style={S.p}>You said you're carrying: <em>{carrying || "Nothing shared yet."}</em></p>
-          <div style={{ ...S.card, background: C.cream }}>
+          <div style={{ ...S.card, background: C.cream, color: C.navy }}>
             <p style={{ ...S.p, fontWeight: 700, marginBottom: 8 }}>How booking works on Vagaro</p>
-            <p style={{ ...S.p, fontSize: 14.5, marginBottom: 10 }}>I use Vagaro to schedule appointments. When you tap the button below, my Vagaro page opens in a new tab. Here is what to expect.</p>
-            <ol style={{ ...S.p, fontSize: 14.5, paddingLeft: 20, margin: "0 0 10px" }}>
+            <p style={{ ...S.p, fontSize: 15.5, marginBottom: 10, color: C.navy }}>I use Vagaro to schedule appointments. When you tap the button below, my Vagaro page opens in a new tab. Here is what to expect.</p>
+            <ol style={{ ...S.p, fontSize: 15.5, color: C.navy, paddingLeft: 20, margin: "0 0 10px" }}>
               {VAGARO_STEPS.map((step) => <li key={step} style={{ marginBottom: 6 }}>{step}</li>)}
             </ol>
-            <p style={{ ...S.p, fontSize: 14.5, margin: 0 }}>Your answers from this page have already been sent to me, so you will not need to repeat them. If you get stuck, email info@thewholenessplace.com and I will help you book.</p>
+            <p style={{ ...S.p, fontSize: 15.5, margin: 0, color: C.navy }}>Your answers from this page have already been sent to me, so you will not need to repeat them. If you get stuck, email info@thewholenessplace.com and I will help you book.</p>
           </div>
           <button style={S.primary} onClick={handleBooking}>Go to Vagaro and pick my time</button>
           <button style={S.ghost} onClick={resetAll}>
