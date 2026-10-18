@@ -4,7 +4,7 @@
 
 A mobile-first, single-page quiz. Seven questions → result (Reset / Reconnect /
 Regulate / Restore) → email capture → session choice (bodywork / mindwork /
-soulwork) → intake → the correct Square booking page.
+soulwork) → intake → the Vagaro booking page.
 
 Built from `twp-quiz-v2.jsx` per `twp-quiz-codex-spec.md`. All copy, flow, and
 styling are ported from the prototype verbatim; this build adds real booking
@@ -22,17 +22,17 @@ npm run dev
 All quiz content, pricing, and the booking-link map live in `src/config.js`.
 Nothing is hardcoded into the screens in `src/App.jsx`.
 
-### Booking links (Square → Acuity later)
+### Booking links (Vagaro)
 
 `BOOKING_LINKS` in `src/config.js` is the single config object the booking
-flow reads from. To move from Square to Acuity (or any other provider),
+flow reads from. To move from Vagaro (or any other provider),
 edit the values in that one object — no component changes needed.
 
 ### Intake delivery (Formspree)
 
-Square has no way to receive quiz/intake answers, so on "Pick my time" the
+Vagaro has no way to receive quiz/intake answers, so on "Pick my time" the
 full record is posted to a no-backend form service (Formspree) that emails
-`info@thewholenessplace.com`, and the Square booking page opens at the same
+`info@thewholenessplace.com`, and the Vagaro booking page opens at the same
 time. The email capture card does the same on a smaller record.
 
 The form endpoint (`https://formspree.io/f/meeyezrz`) is hardcoded in
