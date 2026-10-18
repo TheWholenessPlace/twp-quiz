@@ -9,6 +9,7 @@ import {
   BODYWORK_PRICING,
   SOUL_SETTINGS,
   SOUL_PRICING,
+  SOUL_SETTING_NOTE,
   PILLAR_QUESTIONS,
   FORMATS,
   DARK_SCREENS,
@@ -249,14 +250,10 @@ export default function TWPQuiz() {
 
         {screen === "detail" && modality === "soulwork" && (<>
           <div style={S.eyebrow}>soulwork</div>
-          <h2 style={S.h2}>Where should soul work find you?</h2>
+          <h2 style={S.h2}>How much time does today need?</h2>
           <p style={S.p}>{MODALITIES.soulwork.happens}</p>
-          {SOUL_SETTINGS.map((f) => <Pill key={f} label={f} active={format === f} onClick={() => { setFormat(f); setDuration(""); }} />)}
-          {format && (<>
-            <p style={{ ...S.p, fontWeight: 700, margin: "18px 0 8px" }}>How much time does today need?</p>
-            {SOUL_PRICING[format].map(([d, sub]) => <Pill key={d} label={d} sub={sub} active={duration === d} onClick={() => setDuration(d)} />)}
-            {format !== "Online" && <p style={S.fine}>Beyond my service radius, a small distance fee applies — confirmed at booking.</p>}
-          </>)}
+          {SOUL_PRICING[SOUL_SETTINGS[0]].map(([d, sub]) => <Pill key={d} label={d} sub={sub} active={duration === d} onClick={() => { setFormat(SOUL_SETTINGS[0]); setDuration(d); }} />)}
+          <p style={S.fine}>{SOUL_SETTING_NOTE}</p>
           <button style={{ ...S.primary, opacity: format && duration ? 1 : 0.45 }} disabled={!(format && duration)} onClick={() => go("intake")}>Continue</button>
         </>)}
 

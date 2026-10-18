@@ -133,19 +133,13 @@ export const BODYWORK_PRICING = {
   ],
 };
 
-export const SOUL_SETTINGS = ["In your home", "In nature", "Online"];
+// Soul Work books as an online session on Vagaro. Virtual or in nature is confirmed with the client before the appointment.
+export const SOUL_SETTINGS = ["Online"];
+export const SOUL_SETTING_NOTE = "We will confirm with you before your appointment whether your session is virtual or in nature.";
 export const SOUL_PRICING = {
   "Online": [
-    ["60 minutes · $135", "The complete session — time to arrive, settle in, go deep, and come back slowly"],
-    ["90 minutes · $185", "More time — for when you need longer to let go"],
-  ],
-  "In your home": [
-    ["60 minutes · $185", "The complete session — in your own space"],
-    ["90 minutes · $235", "More time — for when you need longer to let go"],
-  ],
-  "In nature": [
-    ["60 minutes · $185", "The complete session — outside, where it's quiet"],
-    ["90 minutes · $235", "More time — for when you need longer to let go"],
+    ["60 minutes · $135", "The complete session: time to arrive, settle in, go deep, and come back slowly"],
+    ["90 minutes · $185", "More time, for when you need longer to let go"],
   ],
 };
 
