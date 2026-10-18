@@ -164,10 +164,8 @@ export default function TWPQuiz() {
 
   const Pill = ({ label, sub, active, onClick, badge }) => (
     <button onClick={onClick} style={{ ...S.btn, marginBottom: 10, borderColor: active ? C.gold : C.sky, borderLeftColor: active ? C.gold : C.sky, background: active ? "#fdf8f0" : "#fff" }}>
-      <span style={{ fontWeight: 700, display: "block", color: C.navy }}>
-        {label}
-        {badge && <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#fff", background: C.ocean, borderRadius: 8, padding: "3px 8px", marginLeft: 8, verticalAlign: "middle" }}>{badge}</span>}
-      </span>
+      {badge && <span style={{ display: "inline-block", whiteSpace: "nowrap", fontSize: 12, fontWeight: 700, letterSpacing: "0.04em", color: C.brown, background: "#f6ecdc", border: `1px solid ${C.gold}`, borderRadius: 20, padding: "3px 10px", marginBottom: 8 }}>{badge}</span>}
+      <span style={{ fontWeight: 700, display: "block", color: C.navy }}>{label}</span>
       {sub && <span style={{ fontSize: 15, fontWeight: 400, color: C.navy, display: "block", marginTop: 4, lineHeight: 1.45 }}>{sub}</span>}
     </button>
   );
