@@ -106,45 +106,43 @@ export const DURATIONS = {
   mindwork: [
     ["60 minutes · $145", "One Thing — support with one concern"],
     ["90 minutes · $195", "The Deeper Untangling"],
-    ["180 minutes · $275", "The Monthly Deep Dive — one long session a month, everything on the table"],
   ],
 };
 
-// Himalayan Salt Hot Stone intentionally has no entry here — its pricing is
-// "confirmed at booking" per spec section 5, which the detail screen already
-// falls back to when BODYWORK_PRICING[bodyType] is undefined.
+// Prices match the live Vagaro menu (checked Oct 18, 2026).
 export const BODYWORK_PRICING = {
   "Swedish": [
-    ["60 minutes · $130", ""],
-    ["90 minutes · $170", ""],
+    ["60 minutes · $135", ""],
+    ["90 minutes · $160", ""],
   ],
   "Deep Tissue": [
     ["60 minutes · $145", ""],
     ["90 minutes · $175", ""],
   ],
   "Aromatherapy": [
-    ["60 minutes · $135", ""],
-    ["90 minutes · $170", ""],
+    ["60 minutes · $140", ""],
+    ["90 minutes · $165", ""],
   ],
   "Pre-Natal / Post-Natal": [
     ["60 minutes · $145", ""],
     ["90 minutes · $175", ""],
   ],
+  "Himalayan Salt Hot Stone": [
+    ["60 minutes · $165", ""],
+    ["90 minutes · $205", ""],
+  ],
 };
 
-export const SOUL_SETTINGS = ["In your home", "In nature", "Online"];
+// Matches the Vagaro Soul Work menu: Virtual and Nature sessions (checked Oct 18, 2026).
+export const SOUL_SETTINGS = ["Online", "In nature"];
 export const SOUL_PRICING = {
   "Online": [
-    ["60 minutes · $135", "The complete session — time to arrive, settle in, go deep, and come back slowly"],
-    ["90 minutes · $185", "More time — for when you need longer to let go"],
-  ],
-  "In your home": [
-    ["60 minutes · $185", "The complete session — in your own space"],
-    ["90 minutes · $235", "More time — for when you need longer to let go"],
+    ["60 minutes · $135", "The complete session: time to arrive, settle in, go deep, and come back slowly"],
+    ["90 minutes · $185", "More time, for when you need longer to let go"],
   ],
   "In nature": [
-    ["60 minutes · $185", "The complete session — outside, where it's quiet"],
-    ["90 minutes · $235", "More time — for when you need longer to let go"],
+    ["60 minutes · $185", "The complete session, outside where it's quiet"],
+    ["90 minutes · $235", "More time, for when you need longer to let go"],
   ],
 };
 
@@ -164,28 +162,22 @@ export const PILLAR_QUESTIONS = {
 };
 
 export const FORMATS = {
-  bodywork: { fixed: "At the studio · Toluca Lake — address and arrival details come with your booking confirmation." },
+  bodywork: { fixed: "At the studio · 349 Richmond Street, El Segundo, CA 90245. Arrival details come with your booking confirmation." },
   mindwork: { fixed: "Virtual — we meet from wherever you are." },
   soulwork: {},
 };
 
 export const DARK_SCREENS = ["welcome", "result", "done"];
 
-// ——— Real booking + delivery config (spec sections 5–7) ———
-// Swap Square for Acuity (or any provider) by editing this object only.
-const SQUARE_BASE = "https://book.squareup.com/appointments/llsj7jyc9rfglc/location/LGMJ1WX0891GZ/services";
+// ——— Real booking + delivery config ———
+// All bookings go to the Vagaro services menu. Swap providers by editing this object only.
+const VAGARO_SERVICES = "https://www.vagaro.com/thewholenessplacewellnessco/services";
 
 export const BOOKING_LINKS = {
-  mindwork: `${SQUARE_BASE}/ZPXUQWLY7GVSA5TY7BTX4OQS`,
-  soulwork: `${SQUARE_BASE}/YJ6BHW3ORD3QCTO23I3WQTZW`,
-  bodywork: {
-    "Swedish": `${SQUARE_BASE}/MZCRZKEXRHP2V5CVZ7HCQRHY`,
-    "Deep Tissue": `${SQUARE_BASE}/OXX7GSH57WP6HWAKW2OK6BMS`,
-    "Aromatherapy": `${SQUARE_BASE}/P2OYXCLKCLC3I2Q3CYWM7AS7`,
-    "Pre-Natal / Post-Natal": `${SQUARE_BASE}/5V6RKV7I36DB2G3ZO6PYD5PM`,
-    "Himalayan Salt Hot Stone": `${SQUARE_BASE}/VUNIEQONKVGPSC6SJNJRX66O`,
-  },
-  fallback: SQUARE_BASE,
+  mindwork: VAGARO_SERVICES,
+  soulwork: VAGARO_SERVICES,
+  bodywork: {},
+  fallback: VAGARO_SERVICES,
 };
 
 export function getBookingLink(modality, bodyType) {
