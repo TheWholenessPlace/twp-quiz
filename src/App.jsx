@@ -14,6 +14,7 @@ import {
   DARK_SCREENS,
   getBookingLink,
   EBOOK_URL,
+  RESULT_GUIDES,
 } from "./config.js";
 import { sendRecord, sendEmailCapture, buildIntakeRecord } from "./lib/intake.js";
 
@@ -59,7 +60,7 @@ export default function TWPQuiz() {
     l.href = "https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@300;400;700&family=Hurricane&display=swap";
     document.head.appendChild(l);
     const st = document.createElement("style");
-    st.textContent = "@media (min-width: 900px) { .twp-wrap { zoom: 1.3; } } @media (min-width: 1400px) { .twp-wrap { zoom: 1.45; } }";
+    st.textContent = "@media (min-width: 900px) { .twp-wrap { zoom: 1.3; } } @media (min-width: 1400px) { .twp-wrap { zoom: 1.45; } } @media print { @page { size: letter; margin: 0.6in; } .twp-wrap { zoom: 1 !important; max-width: none !important; } .twp-noprint { display: none !important; } .twp-app { background: #fff !important; padding: 0 !important; min-height: 0 !important; } .twp-print-only { display: block !important; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .twp-section { break-inside: avoid; } }";
     document.head.appendChild(st);
     return () => { document.head.removeChild(l); document.head.removeChild(st); };
   }, []);
@@ -174,7 +175,7 @@ export default function TWPQuiz() {
   );
 
   return (
-    <div style={S.app}>
+    <div className="twp-app" style={S.app}>
       <div className="twp-wrap" style={S.wrap}>
 
         {screen === "welcome" && (<>
@@ -209,7 +210,11 @@ export default function TWPQuiz() {
               <input style={S.input} type="email" placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} />
               <button style={{ ...S.primary, marginTop: 0, background: C.navy, color: C.cream }} onClick={handleEmailSubmit}>Send it to me</button>
             </>) : (
-              <p style={{ ...S.p, color: C.ocean, fontWeight: 700, margin: 0 }}>It has been sent. Please check your inbox.</p>
+              <>
+                <p style={{ ...S.p, color: C.navy, fontWeight: 700, marginBottom: 6 }}>Your {R.name} guide is ready.</p>
+                <p style={{ ...S.p, fontSize: 14.5, color: C.navy, marginBottom: 14 }}>Your free ebook opened in a new tab. You can read your guide here and save it as a PDF.</p>
+                <button style={{ ...S.primary, marginTop: 0, background: C.navy, color: C.cream }} onClick={() => go("guide")}>Open my {R.name} guide</button>
+              </>
             )}
           </div>
 
@@ -218,6 +223,28 @@ export default function TWPQuiz() {
             <p style={{ ...S.fine, textAlign: "center", marginTop: 14 }}>Your tally: Reset {scores.reset} · Reconnect {scores.reconnect} · Regulate {scores.regulate} · Restore {scores.restore}</p>
           )}
         </>)}
+
+        {screen === "guide" && (() => { const G = RESULT_GUIDES[topR]; const h3 = { fontFamily: "'Josefin Slab', serif", fontSize: 19, fontWeight: 700, color: C.navy, margin: "26px 0 10px" }; const li = { ...S.p, color: C.navy, marginBottom: 8 }; return (<>
+          <div style={S.eyebrow}>the wholeness place</div>
+          <div style={{ ...S.script, fontSize: 48 }}>{R.name}</div>
+          <h1 style={{ ...S.h1, color: C.navy, fontSize: 28 }}>Your {R.name} Guide</h1>
+          <hr style={S.goldRule} />
+          <div className="twp-section"><h3 style={h3}>What your result means</h3>
+          <p style={{ ...S.p, color: C.navy }}>{G.means}</p></div>
+          <div className="twp-section"><h3 style={h3}>Signs you may notice</h3>
+          <ol style={{ paddingLeft: 22, margin: 0 }}>{G.signs.map((t) => <li key={t} style={li}>{t}</li>)}</ol></div>
+          <div className="twp-section"><h3 style={h3}>Three things to try this week</h3>
+          <ol style={{ paddingLeft: 22, margin: 0 }}>{G.tries.map((t) => <li key={t} style={li}>{t}</li>)}</ol></div>
+          <div className="twp-section" style={{ ...S.card, background: C.cream, margin: "26px 0 8px" }}><h3 style={{ ...h3, marginTop: 0 }}>How a session helps</h3>
+          <p style={{ ...S.p, color: C.navy, margin: 0 }}>{G.session}</p></div>
+          <p className="twp-print-only" style={{ ...S.p, display: "none", color: C.navy, marginTop: 24 }}>Book your session at thewholenessplace.com or email info@thewholenessplace.com.<br />349 Richmond Street, El Segundo, CA 90245</p>
+          <div className="twp-noprint">
+            <button style={S.primary} onClick={() => go("how")}>Choose your session</button>
+            <button style={{ ...S.primary, background: "#fff", color: C.navy, border: `1px solid ${C.navy}` }} onClick={() => window.print()}>Save as PDF</button>
+            <p style={{ ...S.fine, textAlign: "center", marginTop: 8 }}>When the print window opens, choose Save as PDF.</p>
+            <button style={S.ghost} onClick={() => go("result")}>Back to my result</button>
+          </div>
+        </>); })()}
 
         {screen === "how" && (<>
           <div style={S.eyebrow}>your {R.name} session</div>

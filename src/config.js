@@ -189,3 +189,67 @@ export function getBookingLink(modality, bodyType) {
 
 export const EBOOK_URL = "https://thewholenessplace.store/shop/268362d4-938a-43ce-8225-cafb78e62462";
 export const INTAKE_DELIVERY_EMAIL = "info@thewholenessplace.com";
+
+// ——— Result guides (shown on screen after email capture; saveable as PDF) ———
+export const RESULT_GUIDES = {
+  reset: {
+    means: "Your mind has been working nonstop, and your body has not had a real break. You are not failing. You are overloaded, and you need a full stop.",
+    signs: [
+      "Your mind keeps running through your to do list at night.",
+      "You feel wired, even when you are tired.",
+      "You find it hard to sit still without picking up your phone.",
+      "You push through the day and crash at the end of it.",
+    ],
+    tries: [
+      "Write down everything on your mind before bed. Getting it on paper tells your brain it does not have to hold it.",
+      "Take one 10 minute break each day with no phone, no tasks, and no one needing you.",
+      "Pick one thing on your list that can wait, and let it wait.",
+    ],
+    session: "Mindwork gives you a set time to sort through what is on your mind with someone in your corner. We name what is really going on, decide what matters most, and you leave with one clear next step, written down.",
+  },
+  reconnect: {
+    means: "You have spent so much time taking care of everyone else that you have lost track of yourself. You are still in there. You need time and space to come back to what you feel and what you want.",
+    signs: [
+      "You feel like you are going through the motions.",
+      "You find it hard to answer the question \"What do you want?\"",
+      "You feel numb or far away from yourself.",
+      "Your days are filled with other people's needs.",
+    ],
+    tries: [
+      "Each morning, ask yourself one question: \"How do I feel right now?\" Answer honestly, even if the answer is \"I don't know.\"",
+      "Do one small thing each day just because you enjoy it.",
+      "Spend 10 minutes outside without music or a podcast. Notice what you see and hear.",
+    ],
+    session: "Soulwork is a guided rest session with breathing, stillness, and sound. You do not have to talk it through or explain anything. It gives you quiet time to reconnect with yourself, and you leave with one small practice to keep that connection going.",
+  },
+  regulate: {
+    means: "You have been holding it together for a long time, and your body has been carrying the stress. The tension, the short temper, and the trouble settling down are signs that your nervous system has been on alert too long. Your body needs help learning that it can relax.",
+    signs: [
+      "Your shoulders, jaw, or back stay tight.",
+      "Small things set you off more than they used to.",
+      "Your body feels restless, even when you try to rest.",
+      "You stay braced, even after the day is over.",
+    ],
+    tries: [
+      "Take five slow breaths, making each exhale longer than the inhale. Do this whenever you notice tension.",
+      "Before bed, drop your shoulders, unclench your jaw, and soften your hands.",
+      "Take a short walk after a stressful moment to help your body release it.",
+    ],
+    session: "Bodywork is hands on massage that works directly on the tension your body is holding. Regular sessions help your body let go of stress and settle into a calmer state that lasts beyond the session.",
+  },
+  restore: {
+    means: "You are not lazy. You are depleted. You have been giving more than you have, and your body is asking you to rest. Rest is not a reward you earn after everything is done. It is what you need to keep going.",
+    signs: [
+      "You feel tired, even after you sleep.",
+      "Your body feels heavy, like you are running on empty.",
+      "You have little energy for things you used to enjoy.",
+      "You feel guilty when you rest.",
+    ],
+    tries: [
+      "Go to bed 30 minutes earlier on at least three nights.",
+      "Say no to one request that would drain you.",
+      "Schedule rest on your calendar the same way you schedule work.",
+    ],
+    session: "Bodywork gives your body deep, full rest while someone takes care of you. For this result, a longer session or Himalayan Salt Hot Stone massage can help your body fully let go and recover.",
+  },
+};
