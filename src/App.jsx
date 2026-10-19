@@ -60,7 +60,7 @@ export default function TWPQuiz() {
     l.href = "https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@300;400;700&family=Hurricane&display=swap";
     document.head.appendChild(l);
     const st = document.createElement("style");
-    st.textContent = "@media (min-width: 900px) { .twp-wrap { zoom: 1.3; } } @media (min-width: 1400px) { .twp-wrap { zoom: 1.45; } } @media print { @page { size: letter; margin: 0.6in; } .twp-wrap { zoom: 1 !important; max-width: none !important; } .twp-noprint { display: none !important; } .twp-app { background: #fff !important; padding: 0 !important; min-height: 0 !important; } .twp-print-only { display: block !important; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .twp-section { break-inside: avoid; } }";
+    st.textContent = "@media (min-width: 900px) { .twp-wrap { zoom: 1.3; } } @media (min-width: 1400px) { .twp-wrap { zoom: 1.45; } } @media print { @page { size: letter; margin: 0.6in; } .twp-wrap { zoom: 1 !important; max-width: none !important; } .twp-noprint { display: none !important; } .twp-app { background: #fff !important; padding: 0 !important; min-height: 0 !important; } .twp-print-only { display: block !important; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .twp-section { break-inside: avoid; } .twp-logo { width: 120px !important; margin: 0 auto 4px !important; } .twp-app h3 { margin-top: 16px !important; } .twp-app li { margin-bottom: 4px !important; } .twp-app p, .twp-app li { line-height: 1.5 !important; } }";
     document.head.appendChild(st);
     return () => { document.head.removeChild(l); document.head.removeChild(st); };
   }, []);
@@ -225,7 +225,7 @@ export default function TWPQuiz() {
         </>)}
 
         {screen === "guide" && (() => { const G = RESULT_GUIDES[topR]; const h3 = { fontFamily: "'Josefin Slab', serif", fontSize: 19, fontWeight: 700, color: C.navy, margin: "26px 0 10px" }; const li = { ...S.p, color: C.navy, marginBottom: 8 }; return (<>
-          <div style={S.eyebrow}>the wholeness place</div>
+          <img className="twp-logo" src="/logo.png" alt="The Wholeness Place Wellness Co." style={{ display: "block", width: 180, maxWidth: "60%", height: "auto", margin: "32px auto 10px" }} />
           <div style={{ ...S.script, fontSize: 48 }}>{R.name}</div>
           <h1 style={{ ...S.h1, color: C.navy, fontSize: 28 }}>Your {R.name} Guide</h1>
           <hr style={S.goldRule} />
