@@ -58,7 +58,10 @@ export default function TWPQuiz() {
     l.rel = "stylesheet";
     l.href = "https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@300;400;700&family=Hurricane&display=swap";
     document.head.appendChild(l);
-    return () => document.head.removeChild(l);
+    const st = document.createElement("style");
+    st.textContent = "@media (min-width: 900px) { .twp-wrap { zoom: 1.3; } } @media (min-width: 1400px) { .twp-wrap { zoom: 1.45; } }";
+    document.head.appendChild(st);
+    return () => { document.head.removeChild(l); document.head.removeChild(st); };
   }, []);
 
   const go = (next) => { setFade(false); setTimeout(() => { setScreen(next); setFade(true); }, 220); };
@@ -172,7 +175,7 @@ export default function TWPQuiz() {
 
   return (
     <div style={S.app}>
-      <div style={S.wrap}>
+      <div className="twp-wrap" style={S.wrap}>
 
         {screen === "welcome" && (<>
           <div style={{ ...S.eyebrow, fontSize: 15 }}>the wholeness place</div>
