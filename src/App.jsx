@@ -25,6 +25,8 @@ const VAGARO_STEPS = [
   "Watch for your confirmation by email or text.",
 ];
 
+const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
 const DIRECT_MODALITIES = ["bodywork", "mindwork", "soulwork"];
 
 export default function TWPQuiz() {
@@ -45,7 +47,10 @@ export default function TWPQuiz() {
   const [want, setWant] = useState("");
   const [bodyNotes, setBodyNotes] = useState("");
   const [format, setFormat] = useState("");
-  const [birthDate, setBirthDate] = useState("");
+  const [bMonth, setBMonth] = useState("");
+  const [bDay, setBDay] = useState("");
+  const [bYear, setBYear] = useState("");
+  const birthDate = bMonth && bDay ? `${MONTHS[Number(bMonth) - 1]} ${bDay}${bYear ? `, ${bYear}` : ""}` : "";
   const [birthTime, setBirthTime] = useState("");
   const [birthPlace, setBirthPlace] = useState("");
   const [fullName, setFullName] = useState("");
@@ -93,7 +98,7 @@ export default function TWPQuiz() {
       carrying,
       want,
       bodyNotes,
-      birthDate: birthDate ? new Date(birthDate + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "",
+      birthDate,
       birthTime,
       birthPlace,
       fullName,
@@ -112,7 +117,7 @@ export default function TWPQuiz() {
     setEmail(""); setEmailSent(false);
     setModality(""); setBodyType(""); setDuration("");
     setCarrying(""); setWant(""); setBodyNotes(""); setFormat("");
-    setBirthDate(""); setBirthTime(""); setBirthPlace("");
+    setBMonth(""); setBDay(""); setBYear(""); setBirthTime(""); setBirthPlace("");
     setFullName(""); setPhone("");
   };
 
@@ -309,8 +314,20 @@ export default function TWPQuiz() {
 
           <p style={{ ...S.p, fontWeight: 700, margin: "18px 0 4px" }}>Help me tailor your session.</p>
           <p style={{ ...S.fine, marginBottom: 10 }}>I ask for your birthday so I can celebrate you and personalize your care. Your birth time and city are optional. I use a whole person approach to prepare for your session.</p>
-          <label style={{ ...S.p, display: "block", fontSize: 15, fontWeight: 700, color: C.navy, margin: "0 0 6px" }} htmlFor="twp-bday">Birthday</label>
-          <input id="twp-bday" type="date" max={new Date().toISOString().slice(0, 10)} style={{ ...S.input, minHeight: 52, appearance: "none", WebkitAppearance: "none", display: "block", color: birthDate ? C.navy : "#8a8a8a" }} value={birthDate} onChange={(e) => setBirthDate(e.target.value)} />
+          <p style={{ ...S.p, fontSize: 15, fontWeight: 700, color: C.navy, margin: "0 0 6px" }}>Birthday</p>
+          <div style={{ display: "flex", gap: 8 }}>
+            {[
+              ["Month", bMonth, setBMonth, MONTHS.map((m, i) => [String(i + 1), m]), 1.6],
+              ["Day", bDay, setBDay, Array.from({ length: 31 }, (_, i) => [String(i + 1), String(i + 1)]), 1],
+              ["Year", bYear, setBYear, Array.from({ length: 100 }, (_, i) => { const y = String(new Date().getFullYear() - i); return [y, y]; }), 1.2],
+            ].map(([label, val, set, opts, grow]) => (
+              <select key={label} aria-label={label} value={val} onChange={(e) => set(e.target.value)}
+                style={{ ...S.input, flex: grow, minWidth: 0, minHeight: 52, padding: "12px 10px", color: val ? C.navy : "#8a8a8a", appearance: "none", WebkitAppearance: "none", backgroundImage: `linear-gradient(45deg, transparent 50%, ${C.navy} 50%), linear-gradient(135deg, ${C.navy} 50%, transparent 50%)`, backgroundPosition: "calc(100% - 16px) 50%, calc(100% - 11px) 50%", backgroundSize: "5px 5px", backgroundRepeat: "no-repeat", paddingRight: 26 }}>
+                <option value="">{label}</option>
+                {opts.map(([v, t]) => <option key={v} value={v}>{t}</option>)}
+              </select>
+            ))}
+          </div>
           <input style={S.input} placeholder="Birth time (optional)" value={birthTime} onChange={(e) => setBirthTime(e.target.value)} />
           <input style={S.input} placeholder="City you were born in (optional)" value={birthPlace} onChange={(e) => setBirthPlace(e.target.value)} />
 
