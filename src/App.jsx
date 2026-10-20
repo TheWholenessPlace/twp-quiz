@@ -244,8 +244,8 @@ export default function TWPQuiz() {
             <p style={{ ...S.fine, textAlign: "center", margin: "8px 0 4px" }}>When the print window opens, choose Save as PDF.</p>
             <button style={{ ...S.primary, background: C.navy, color: C.cream }} onClick={() => go("how")}>Choose your session</button>
             <div style={{ ...S.card, background: C.cream, borderColor: C.gold, marginTop: 26 }}>
-              <p style={{ ...S.p, fontWeight: 700, color: C.navy, marginBottom: 6 }}>Free ebook: <em>Coming Home to Yourself</em></p>
-              <p style={{ ...S.p, fontSize: 15, color: C.navy, marginBottom: 14 }}>Enter your email to get my free ebook.</p>
+              <p style={{ ...S.p, fontWeight: 700, color: C.navy, marginBottom: 6 }}>A gift from me to you</p>
+              <p style={{ ...S.p, fontSize: 15, color: C.navy, marginBottom: 14 }}>I wrote <em>Coming Home to Yourself</em> for women who have been taking care of everyone but themselves. Enter your email, and it is yours for free.</p>
               {!emailSent ? (<>
                 <input style={S.input} type="email" placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <button style={{ ...S.primary, marginTop: 0, background: C.navy, color: C.cream }} onClick={handleEmailSubmit}>Send me the ebook</button>
