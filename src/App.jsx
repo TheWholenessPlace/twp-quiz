@@ -13,10 +13,9 @@ import {
   FORMATS,
   DARK_SCREENS,
   getBookingLink,
-  EBOOK_URL,
   RESULT_GUIDES,
 } from "./config.js";
-import { sendRecord, sendEmailCapture, buildIntakeRecord } from "./lib/intake.js";
+import { sendRecord, buildIntakeRecord } from "./lib/intake.js";
 
 const VAGARO_STEPS = [
   "Find your session on the list and tap Request.",
@@ -81,13 +80,6 @@ export default function TWPQuiz() {
   const R = RESULTS[topR];
   const dark = DARK_SCREENS.includes(screen);
   const resultName = directStart ? "direct" : R.name;
-
-  const handleEmailSubmit = () => {
-    if (!email.includes("@")) return;
-    sendEmailCapture({ email, resultName, scores });
-    window.open(EBOOK_URL, "_blank", "noopener,noreferrer");
-    setEmailSent(true);
-  };
 
   const handleBooking = () => {
     const session = modality === "bodywork" ? bodyType : modality === "soulwork" ? format : "";
@@ -243,16 +235,6 @@ export default function TWPQuiz() {
             <button style={S.primary} onClick={() => window.print()}>Save as PDF</button>
             <p style={{ ...S.fine, textAlign: "center", margin: "8px 0 4px" }}>When the print window opens, choose Save as PDF.</p>
             <button style={{ ...S.primary, background: C.navy, color: C.cream }} onClick={() => go("how")}>Choose your session</button>
-            <div style={{ ...S.card, background: C.cream, borderColor: C.gold, marginTop: 26 }}>
-              <p style={{ ...S.p, fontWeight: 700, color: C.navy, marginBottom: 6 }}>A gift from me to you</p>
-              <p style={{ ...S.p, fontSize: 15, color: C.navy, marginBottom: 14 }}>I wrote <em>Coming Home to Yourself</em> for women who have been taking care of everyone but themselves. Enter your email, and it is yours for free.</p>
-              {!emailSent ? (<>
-                <input style={S.input} type="email" placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                <button style={{ ...S.primary, marginTop: 0, background: C.navy, color: C.cream }} onClick={handleEmailSubmit}>Send me the ebook</button>
-              </>) : (
-                <p style={{ ...S.p, color: C.navy, fontWeight: 700, margin: 0 }}>Your ebook opened in a new tab.</p>
-              )}
-            </div>
             <button style={S.ghost} onClick={() => go("result")}>Back to my result</button>
           </div>
         </>); })()}
