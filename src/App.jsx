@@ -176,7 +176,7 @@ export default function TWPQuiz() {
       <div className={screen === "guide" ? "twp-wrap twp-wide" : "twp-wrap"} style={S.wrap}>
 
         {screen === "welcome" && (<>
-          <div style={{ background: C.cream, borderRadius: 22, padding: "18px 16px 14px", margin: "32px 0 22px", textAlign: "center", boxShadow: "0 6px 24px rgba(0,0,0,0.18)" }}>
+          <div style={{ background: `linear-gradient(180deg, ${C.lightBlue} 0%, ${C.ice} 55%, ${C.cream} 100%)`, border: `1px solid ${C.ice}`, borderRadius: 20, padding: "22px 16px 18px", margin: "32px 0 22px", textAlign: "center", boxShadow: "0 6px 24px rgba(0,0,0,0.18)" }}>
             <img src="/logo.png" alt="The Wholeness Place Wellness Co." style={{ display: "block", width: 230, maxWidth: "75%", height: "auto", margin: "0 auto" }} />
           </div>
           <div style={S.script}>Put yourself back together</div>
