@@ -148,7 +148,7 @@ export const SOUL_PRICING = {
 
 export const PILLAR_QUESTIONS = {
   bodywork: {
-    focus: { label: "Where does your body hold tension the most?", options: ["My neck and shoulders", "My back", "My hips and legs", "All of it"] },
+    focus: { label: "Where does your body hold tension the most?", options: ["My neck and shoulders", "My back", "My hips and legs", "All of it", "Somewhere else"], other: "Somewhere else", otherPlaceholder: "Tell me where you feel it most." },
     notes: { label: "Is there anything about your body I should know?", placeholder: "Please share any injuries, sensitivities, or allergies." },
   },
   mindwork: {
