@@ -93,7 +93,7 @@ export default function TWPQuiz() {
       carrying,
       want,
       bodyNotes,
-      birthDate,
+      birthDate: birthDate ? new Date(birthDate + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "",
       birthTime,
       birthPlace,
       fullName,
@@ -309,7 +309,8 @@ export default function TWPQuiz() {
 
           <p style={{ ...S.p, fontWeight: 700, margin: "18px 0 4px" }}>Help me tailor your session.</p>
           <p style={{ ...S.fine, marginBottom: 10 }}>I ask for your birthday so I can celebrate you and personalize your care. Your birth time and city are optional. I use a whole person approach to prepare for your session.</p>
-          <input style={S.input} placeholder="Birthday" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} />
+          <label style={{ ...S.p, display: "block", fontSize: 15, fontWeight: 700, color: C.navy, margin: "0 0 6px" }} htmlFor="twp-bday">Birthday</label>
+          <input id="twp-bday" type="date" max={new Date().toISOString().slice(0, 10)} style={{ ...S.input, minHeight: 52, appearance: "none", WebkitAppearance: "none", display: "block", color: birthDate ? C.navy : "#8a8a8a" }} value={birthDate} onChange={(e) => setBirthDate(e.target.value)} />
           <input style={S.input} placeholder="Birth time (optional)" value={birthTime} onChange={(e) => setBirthTime(e.target.value)} />
           <input style={S.input} placeholder="City you were born in (optional)" value={birthPlace} onChange={(e) => setBirthPlace(e.target.value)} />
 
