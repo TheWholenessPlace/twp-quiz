@@ -313,7 +313,7 @@ export default function TWPQuiz() {
           <input style={S.input} placeholder="Birth time (optional)" value={birthTime} onChange={(e) => setBirthTime(e.target.value)} />
           <input style={S.input} placeholder="City you were born in (optional)" value={birthPlace} onChange={(e) => setBirthPlace(e.target.value)} />
 
-          <p style={{ ...S.p, fontWeight: 700, margin: "18px 0 8px" }}>Last thing: how can I reach you?</p>
+          <p style={{ ...S.p, fontWeight: 700, margin: "18px 0 8px" }}>Last thing: How can I reach you?</p>
           <input style={S.input} placeholder="Your name" value={fullName} onChange={(e) => setFullName(e.target.value)} />
           <input style={S.input} type="email" placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} />
           <input style={S.input} type="tel" placeholder="Your phone number" value={phone} onChange={(e) => setPhone(e.target.value)} />
