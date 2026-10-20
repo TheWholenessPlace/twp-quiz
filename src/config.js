@@ -6,72 +6,72 @@ export const C = {
 
 export const QUESTIONS = [
   { q: "When you finally sit down at night, what happens?", a: [
-    ["My mind keeps running the list", "reset"],
-    ["I feel far away from myself", "reconnect"],
-    ["My body stays tense, still braced", "regulate"],
-    ["I'm too depleted to feel anything", "restore"],
+    ["My mind keeps running through my to do list.", "reset"],
+    ["I feel far away from myself.", "reconnect"],
+    ["My body stays tense and braced.", "regulate"],
+    ["I am too worn out to feel anything.", "restore"],
   ]},
   { q: "What has your body been telling you lately?", a: [
-    ["Wired. I can't power down", "reset"],
-    ["Numb. Going through the motions", "reconnect"],
-    ["On edge. Everything sets me off", "regulate"],
-    ["Heavy. Running on empty", "restore"],
+    ["I feel wired, and I cannot power down.", "reset"],
+    ["I feel numb, like I am going through the motions.", "reconnect"],
+    ["I feel on edge, and little things set me off.", "regulate"],
+    ["I feel heavy, like I am running on empty.", "restore"],
   ]},
   { q: "When did you last feel like yourself?", a: [
-    ["I can't slow down long enough to know", "reset"],
-    ["It's been so long I almost forgot her", "reconnect"],
-    ["I feel her — but I can't stay steady", "regulate"],
-    ["She's in there. Just exhausted", "restore"],
+    ["I cannot slow down long enough to know.", "reset"],
+    ["It has been so long that I almost forgot who she is.", "reconnect"],
+    ["I can feel her, but I cannot stay steady.", "regulate"],
+    ["She is still in there, but she is exhausted.", "restore"],
   ]},
   { q: "What sounds like relief right now?", a: [
-    ["Everything stopping for one hour", "reset"],
-    ["Remembering what I actually want", "reconnect"],
-    ["Feeling calm in my own skin", "regulate"],
-    ["Being taken care of, for once", "restore"],
+    ["I want everything to stop for one hour.", "reset"],
+    ["I want to remember what I actually want.", "reconnect"],
+    ["I want to feel calm in my own skin.", "regulate"],
+    ["I want to be taken care of for once.", "restore"],
   ]},
   { q: "How do you get through the hard days?", a: [
-    ["Push through now, crash later", "reset"],
-    ["Disappear into everyone else's needs", "reconnect"],
-    ["Hold it together until I can't", "regulate"],
-    ["Honestly? I'm past getting through", "restore"],
+    ["I push through now and crash later.", "reset"],
+    ["I lose myself in everyone else's needs.", "reconnect"],
+    ["I hold it together until I cannot anymore.", "regulate"],
+    ["Honestly, I am past getting through.", "restore"],
   ]},
-  { q: "How's sleep been?", a: [
-    ["My mind won't shut off", "reset"],
-    ["I sleep — but wake up empty", "reconnect"],
-    ["Restless. My body won't settle", "regulate"],
-    ["Never enough. Always tired", "restore"],
+  { q: "How has your sleep been?", a: [
+    ["My mind will not shut off.", "reset"],
+    ["I sleep, but I wake up feeling empty.", "reconnect"],
+    ["I am restless, and my body will not settle.", "regulate"],
+    ["I never get enough, and I am always tired.", "restore"],
   ]},
-  { q: "If one session could give you one thing?", a: [
-    ["A full stop. Silence.", "reset"],
-    ["Me, back.", "reconnect"],
-    ["Steadiness I get to keep", "regulate"],
-    ["Permission to rest", "restore"],
+  { q: "If one session could give you one thing, what would it be?", a: [
+    ["I want a full stop and some quiet.", "reset"],
+    ["I want to feel like myself again.", "reconnect"],
+    ["I want a steadiness I get to keep.", "regulate"],
+    ["I want permission to rest.", "restore"],
   ]},
 ];
 
 export const RESULTS = {
   reset: {
     name: "Reset",
-    line: "Your body isn't asking you to try harder.",
-    body: "It's asking for a full stop. Not a vacation you have to plan. Not a bath you have to clean up after. A real pause — where nothing is required of you. You've been running the list so long you forgot the list isn't you. Come put it down for an hour.",
+    line: "Your body is not asking you to try harder.",
+    body: "Your body is asking for a full stop. It is not asking for a vacation you have to plan or a bath you have to clean up after. It is asking for a real pause where nothing is required of you. You have been running through your list for so long that you forgot the list is not you. Come put it down for an hour.",
     rec: "mindwork",
   },
   reconnect: {
     name: "Reconnect",
-    line: "Somewhere between everyone who needs you, you got misplaced.",
-    body: "You're still in there. But the distance between you and yourself has been growing quietly for a while now. This work is how we close that distance. Not fixing you — finding you. She's worth coming back for.",
+    line: "Somewhere between everyone who needs you, you lost track of yourself.",
+    body: "You are still in there. The distance between you and yourself has been growing quietly for a while now. This work is how we close that distance. We are not fixing you. We are finding you, and you are worth coming back for.",
     rec: "soulwork",
   },
   regulate: {
     name: "Regulate",
-    line: "You're holding it together — and your body is paying for it.",
-    body: "The braced shoulders. The short fuse. The tension that stays even after the day ends. That's not a character flaw. That's a nervous system that's been on duty too long. This work teaches your body it's allowed to stand down. Steadiness you get to keep.",
+    line: "You are holding it together, and your body is paying for it.",
+    body: "Your shoulders stay braced, your patience runs short, and the tension stays even after the day ends. That is not a character flaw. That is a nervous system that has been on duty too long. This work teaches your body that it is allowed to stand down, and it gives you a steadiness you get to keep.",
     rec: "bodywork",
   },
   restore: {
     name: "Restore",
-    line: "You're not lazy. You're depleted.",
-    body: "There's a difference — and your body knows it, even when your mind argues. This is being taken care of. Actually. Fully. Without earning it first. Rest isn't a reward for finishing everything. It's what makes you possible. Come be held together for a while.",
+    line: "You are not lazy. You are depleted.",
+    body: "There is a difference, and your body knows it even when your mind argues. This is a time to be taken care of fully, without earning it first. Rest is not a reward for finishing everything. Rest is what makes everything else possible. Come rest and let yourself be cared for.",
     rec: "bodywork",
   },
 };
@@ -79,33 +79,33 @@ export const RESULTS = {
 export const MODALITIES = {
   bodywork: {
     title: "Bodywork",
-    line: "Hands-on massage, on the table. For when it lives in your body and words won't reach it.",
+    line: "This is hands on massage on the table. It is for when the stress lives in your body and words will not reach it.",
     happens: "",
   },
   mindwork: {
     title: "Mindwork",
-    line: "A one-on-one working conversation — coaching, not therapy. For when you need to think it through.",
-    happens: "You bring what's gotten too heavy to sort alone — a decision, a transition, a mental load. We slow down, get honest about what's really going on, and work it. You leave with a clear next step, written down.",
+    line: "This is a one on one working conversation. It is coaching, not therapy, for when you need to think something through.",
+    happens: "You bring what has gotten too heavy to sort out alone, such as a decision, a transition, or a mental load. We slow down, get honest about what is really going on, and work through it. You leave with a clear next step, written down.",
   },
   soulwork: {
     title: "Soulwork",
-    line: "A guided rest experience — breathing, stillness, sound. You don't talk it through. You receive.",
-    happens: "I guide you out of your head and back into your body — slow breathing, deep rest with sound, gentle release of what you're holding. You don't perform, produce, or explain anything. You leave with a quieter nervous system and one small practice for keeping it.",
+    line: "This is a guided rest experience with breathing, stillness, and sound. You do not have to talk it through. You simply receive.",
+    happens: "I guide you out of your head and back into your body with slow breathing, deep rest with sound, and gentle release of what you are holding. You do not have to perform, produce, or explain anything. You leave with a quieter nervous system and one small practice to keep it that way.",
   },
 };
 
 export const BODYWORK_TYPES = [
-  ["Swedish", "Gentle, flowing, full-body ease"],
-  ["Deep Tissue", "Firm, focused work where it's been holding"],
-  ["Aromatherapy", "Soothing touch, carried by scent"],
-  ["Pre-Natal / Post-Natal", "Care for the body that's carrying, or carried"],
-  ["Himalayan Salt Hot Stone", "The deepest rest on the menu — warmth, weight, and release"],
+  ["Swedish", "This is gentle, flowing, full body relief."],
+  ["Deep Tissue", "This is firm, focused work on the areas holding tension."],
+  ["Aromatherapy", "This is soothing massage paired with essential oils chosen for you."],
+  ["Pre-Natal / Post-Natal", "This is care for your body during pregnancy or after birth."],
+  ["Himalayan Salt Hot Stone", "This is the deepest rest on the menu, with warm stones that help your body release."],
 ];
 
 export const DURATIONS = {
   mindwork: [
-    ["60 minutes · $145", "One Thing — support with one concern"],
-    ["90 minutes · $195", "The Deeper Untangling"],
+    ["60 minutes · $145", "This session gives you support with one concern."],
+    ["90 minutes · $195", "This session gives you more time to work through something bigger."],
   ],
 };
 
@@ -137,33 +137,33 @@ export const BODYWORK_PRICING = {
 export const SOUL_SETTINGS = ["Online", "In nature"];
 export const SOUL_PRICING = {
   "Online": [
-    ["60 minutes · $135", "The complete session: time to arrive, settle in, go deep, and come back slowly"],
-    ["90 minutes · $185", "More time, for when you need longer to let go"],
+    ["60 minutes · $135", "This is the complete session, with time to arrive, settle in, go deep, and come back slowly."],
+    ["90 minutes · $185", "This gives you more time when you need longer to let go."],
   ],
   "In nature": [
-    ["60 minutes · $185", "The complete session, outside where it's quiet"],
-    ["90 minutes · $235", "More time, for when you need longer to let go"],
+    ["60 minutes · $185", "This is the complete session, held outdoors where it is quiet."],
+    ["90 minutes · $235", "This gives you more time when you need longer to let go."],
   ],
 };
 
 export const PILLAR_QUESTIONS = {
   bodywork: {
-    focus: { label: "Where does your body hold it most?", options: ["Neck & shoulders", "Back", "Hips & legs", "All of it"] },
-    notes: { label: "Anything your body needs me to know?", placeholder: "Injuries, sensitivities, allergies — anything at all." },
+    focus: { label: "Where does your body hold tension the most?", options: ["My neck and shoulders", "My back", "My hips and legs", "All of it"] },
+    notes: { label: "Is there anything about your body I should know?", placeholder: "Please share any injuries, sensitivities, or allergies." },
   },
   mindwork: {
-    focus: { label: "What would make this session a win?", options: ["A decision made", "A plan started", "A pattern untangled", "I'll know it when I feel it"] },
+    focus: { label: "What would make this session a success for you?", options: ["I want to make a decision.", "I want to start a plan.", "I want to untangle a pattern.", "I will know it when I feel it."] },
     notes: null,
   },
   soulwork: {
-    focus: { label: "What are you hoping to put down?", options: ["The tension I've been holding", "The noise in my head", "Grief or heaviness", "I don't know — I just need to rest"] },
-    notes: { label: "Anything that helps your rest — or gets in the way of it?", placeholder: "Sounds, scents, anything at all." },
+    focus: { label: "What are you hoping to let go of?", options: ["The tension I have been holding", "The noise in my head", "Grief or heaviness", "I am not sure. I just need to rest."] },
+    notes: { label: "Is there anything that helps you rest or gets in the way of rest?", placeholder: "Please share any sounds, scents, or other preferences." },
   },
 };
 
 export const FORMATS = {
-  bodywork: { fixed: "At the studio · 349 Richmond Street, El Segundo, CA 90245. Arrival details come with your booking confirmation." },
-  mindwork: { fixed: "Virtual — we meet from wherever you are." },
+  bodywork: { fixed: "Your session is at the studio at 349 Richmond Street, El Segundo, CA 90245. Arrival details come with your booking confirmation." },
+  mindwork: { fixed: "Your session is virtual, so we meet from wherever you are." },
   soulwork: {},
 };
 
@@ -189,3 +189,67 @@ export function getBookingLink(modality, bodyType) {
 
 export const EBOOK_URL = "https://thewholenessplace.store/shop/268362d4-938a-43ce-8225-cafb78e62462";
 export const INTAKE_DELIVERY_EMAIL = "info@thewholenessplace.com";
+
+// ——— Result guides (shown on screen after email capture; saveable as PDF) ———
+export const RESULT_GUIDES = {
+  reset: {
+    means: "Your mind has been working nonstop, and your body has not had a real break. You are not failing. You are overloaded, and you need a full stop.",
+    signs: [
+      "Your mind keeps running through your to do list at night.",
+      "You feel wired, even when you are tired.",
+      "You find it hard to sit still without picking up your phone.",
+      "You push through the day and crash at the end of it.",
+    ],
+    tries: [
+      "Write down everything on your mind before bed. Getting it on paper tells your brain it does not have to hold it.",
+      "Take one 10 minute break each day with no phone, no tasks, and no one needing you.",
+      "Pick one thing on your list that can wait, and let it wait.",
+    ],
+    session: "Mindwork gives you a set time to sort through what is on your mind with someone in your corner. We name what is really going on, decide what matters most, and you leave with one clear next step, written down.",
+  },
+  reconnect: {
+    means: "You have spent so much time taking care of everyone else that you have lost track of yourself. You are still in there. You need time and space to come back to what you feel and what you want.",
+    signs: [
+      "You feel like you are going through the motions.",
+      "You find it hard to answer the question \"What do you want?\"",
+      "You feel numb or far away from yourself.",
+      "Your days are filled with other people's needs.",
+    ],
+    tries: [
+      "Each morning, ask yourself one question: \"How do I feel right now?\" Answer honestly, even if the answer is \"I don't know.\"",
+      "Do one small thing each day just because you enjoy it.",
+      "Spend 10 minutes outside without music or a podcast. Notice what you see and hear.",
+    ],
+    session: "Soulwork is a guided rest session with breathing, stillness, and sound. You do not have to talk it through or explain anything. It gives you quiet time to reconnect with yourself, and you leave with one small practice to keep that connection going.",
+  },
+  regulate: {
+    means: "You have been holding it together for a long time, and your body has been carrying the stress. The tension, the short temper, and the trouble settling down are signs that your nervous system has been on alert too long. Your body needs help learning that it can relax.",
+    signs: [
+      "Your shoulders, jaw, or back stay tight.",
+      "Small things set you off more than they used to.",
+      "Your body feels restless, even when you try to rest.",
+      "You stay braced, even after the day is over.",
+    ],
+    tries: [
+      "Take five slow breaths, making each exhale longer than the inhale. Do this whenever you notice tension.",
+      "Before bed, drop your shoulders, unclench your jaw, and soften your hands.",
+      "Take a short walk after a stressful moment to help your body release it.",
+    ],
+    session: "Bodywork is hands on massage that works directly on the tension your body is holding. Regular sessions help your body let go of stress and settle into a calmer state that lasts beyond the session.",
+  },
+  restore: {
+    means: "You are not lazy. You are depleted. You have been giving more than you have, and your body is asking you to rest. Rest is not a reward you earn after everything is done. It is what you need to keep going.",
+    signs: [
+      "You feel tired, even after you sleep.",
+      "Your body feels heavy, like you are running on empty.",
+      "You have little energy for things you used to enjoy.",
+      "You feel guilty when you rest.",
+    ],
+    tries: [
+      "Go to bed 30 minutes earlier on at least three nights.",
+      "Say no to one request that would drain you.",
+      "Schedule rest on your calendar the same way you schedule work.",
+    ],
+    session: "Bodywork gives your body deep, full rest while someone takes care of you. For this result, a longer session or Himalayan Salt Hot Stone massage can help your body fully let go and recover.",
+  },
+};
