@@ -45,6 +45,7 @@ export default function TWPQuiz() {
   const [duration, setDuration] = useState("");
   const [carrying, setCarrying] = useState("");
   const [want, setWant] = useState("");
+  const [wantOther, setWantOther] = useState("");
   const [bodyNotes, setBodyNotes] = useState("");
   const [format, setFormat] = useState("");
   const [bMonth, setBMonth] = useState("");
@@ -96,7 +97,7 @@ export default function TWPQuiz() {
       session,
       duration,
       carrying,
-      want,
+      want: want && want === PILLAR_QUESTIONS[modality]?.focus.other && wantOther.trim() ? `${want}: ${wantOther.trim()}` : want,
       bodyNotes,
       birthDate,
       birthTime,
@@ -116,7 +117,7 @@ export default function TWPQuiz() {
     setShuffled(QUESTIONS.map((q) => [...q.a].sort(() => Math.random() - 0.5)));
     setEmail(""); setEmailSent(false);
     setModality(""); setBodyType(""); setDuration("");
-    setCarrying(""); setWant(""); setBodyNotes(""); setFormat("");
+    setCarrying(""); setWant(""); setWantOther(""); setBodyNotes(""); setFormat("");
     setBMonth(""); setBDay(""); setBYear(""); setBirthTime(""); setBirthPlace("");
     setFullName(""); setPhone("");
   };
@@ -306,6 +307,9 @@ export default function TWPQuiz() {
 
           <p style={{ ...S.p, fontWeight: 700, margin: "10px 0 8px" }}>{PILLAR_QUESTIONS[modality].focus.label}</p>
           {PILLAR_QUESTIONS[modality].focus.options.map((w) => <Pill key={w} label={w} active={want === w} onClick={() => setWant(w)} />)}
+          {want && want === PILLAR_QUESTIONS[modality].focus.other && (
+            <input autoFocus style={S.input} placeholder={PILLAR_QUESTIONS[modality].focus.otherPlaceholder} value={wantOther} onChange={(e) => setWantOther(e.target.value)} />
+          )}
 
           <p style={{ ...S.p, fontWeight: 700, margin: "18px 0 8px" }}>Where we will meet</p>
           <p style={{ ...S.p, color: C.ocean }}>{FORMATS[modality].fixed || format}</p>

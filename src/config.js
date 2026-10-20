@@ -148,15 +148,15 @@ export const SOUL_PRICING = {
 
 export const PILLAR_QUESTIONS = {
   bodywork: {
-    focus: { label: "Where does your body hold tension the most?", options: ["My neck and shoulders", "My back", "My hips and legs", "All of it"] },
+    focus: { label: "Where does your body hold tension the most?", options: ["My neck and shoulders", "My back", "My hips and legs", "All of it", "Somewhere else"], other: "Somewhere else", otherPlaceholder: "Tell me where you feel it most." },
     notes: { label: "Is there anything about your body I should know?", placeholder: "Please share any injuries, sensitivities, or allergies." },
   },
   mindwork: {
-    focus: { label: "What would make this session a success for you?", options: ["I want to make a decision.", "I want to start a plan.", "I want to untangle a pattern.", "I will know it when I feel it."] },
+    focus: { label: "What would make this session a success for you?", options: ["I want to make a decision.", "I want to start a plan.", "I want to untangle a pattern.", "I will know it when I feel it.", "Something else"], other: "Something else", otherPlaceholder: "Tell me what would make this session a success for you." },
     notes: null,
   },
   soulwork: {
-    focus: { label: "What are you hoping to let go of?", options: ["The tension I have been holding", "The noise in my head", "Grief or heaviness", "I am not sure. I just need to rest."] },
+    focus: { label: "What are you hoping to let go of?", options: ["The tension I have been holding", "The noise in my head", "Grief or heaviness", "I am not sure. I just need to rest.", "Something else"], other: "Something else", otherPlaceholder: "Tell me what you are hoping to let go of." },
     notes: { label: "Is there anything that helps you rest or gets in the way of rest?", placeholder: "Please share any sounds, scents, or other preferences." },
   },
 };
