@@ -60,7 +60,7 @@ export default function TWPQuiz() {
     l.href = "https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@300;400;700&family=Hurricane&display=swap";
     document.head.appendChild(l);
     const st = document.createElement("style");
-    st.textContent = "@media (min-width: 900px) { .twp-wrap { zoom: 1.3; } } @media (min-width: 1400px) { .twp-wrap { zoom: 1.45; } } @media print { @page { size: letter; margin: 0.6in; } .twp-wrap { zoom: 1 !important; max-width: none !important; } .twp-noprint { display: none !important; } .twp-app { background: #fff !important; padding: 0 !important; min-height: 0 !important; } .twp-print-only { display: block !important; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .twp-section { break-inside: avoid; } .twp-logo { width: 120px !important; margin: 0 auto 4px !important; } .twp-app h3 { margin-top: 16px !important; } .twp-app li { margin-bottom: 4px !important; } .twp-app p, .twp-app li { line-height: 1.5 !important; } }";
+    st.textContent = "@media (min-width: 900px) { .twp-wrap { zoom: 1.3; } } @media (min-width: 1400px) { .twp-wrap { zoom: 1.45; } } @media print { @page { size: letter; margin: 0.5in; } .twp-wrap { zoom: 1 !important; max-width: none !important; } .twp-noprint { display: none !important; } .twp-app { background: #fff !important; padding: 0 !important; min-height: 0 !important; } .twp-print-only { display: block !important; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .twp-section { break-inside: avoid; } .twp-logo { width: 170px !important; margin: 0 auto 4px !important; } .twp-app p { font-size: 14.5px !important; } .twp-app h1 { font-size: 24px !important; } .twp-app h3 { font-size: 17px !important; margin-bottom: 8px !important; } .twp-guide-head { margin: 0 0 16px !important; padding: 14px 12px 12px !important; } .twp-section { margin-bottom: 12px !important; } .twp-row { margin-bottom: 6px !important; } .twp-app p { line-height: 1.45 !important; } }";
     document.head.appendChild(st);
     return () => { document.head.removeChild(l); document.head.removeChild(st); };
   }, []);
@@ -203,45 +203,56 @@ export default function TWPQuiz() {
           <p style={{ ...S.p, fontWeight: 700 }}>{R.line}</p>
           <p style={S.p}>{R.body}</p>
 
-          <div style={S.card}>
-            <p style={{ ...S.p, fontWeight: 700, marginBottom: 6 }}>Take your result with you.</p>
-            <p style={{ ...S.p, fontSize: 14.5, marginBottom: 14 }}>Get your full {R.name} guide and the free ebook, <em>Coming Home to Yourself</em>.</p>
-            {!emailSent ? (<>
-              <input style={S.input} type="email" placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} />
-              <button style={{ ...S.primary, marginTop: 0, background: C.navy, color: C.cream }} onClick={handleEmailSubmit}>Send it to me</button>
-            </>) : (
-              <>
-                <p style={{ ...S.p, color: C.navy, fontWeight: 700, marginBottom: 6 }}>Your {R.name} guide is ready.</p>
-                <p style={{ ...S.p, fontSize: 14.5, color: C.navy, marginBottom: 14 }}>Your free ebook opened in a new tab. You can read your guide here and save it as a PDF.</p>
-                <button style={{ ...S.primary, marginTop: 0, background: C.navy, color: C.cream }} onClick={() => go("guide")}>Open my {R.name} guide</button>
-              </>
-            )}
-          </div>
-
           <button style={S.primary} onClick={() => go("how")}>Choose your session</button>
+          <p style={{ ...S.p, fontSize: 15, textAlign: "center", marginTop: 18 }}>Want to keep your results?{" "}
+            <button onClick={() => go("guide")} style={{ background: "none", border: "none", padding: 0, font: "inherit", fontWeight: 700, color: C.lightBlue, textDecoration: "underline", cursor: "pointer" }}>Download your {R.name} guide (PDF)</button>
+          </p>
           {isDebug && (
             <p style={{ ...S.fine, textAlign: "center", marginTop: 14 }}>Your tally: Reset {scores.reset} · Reconnect {scores.reconnect} · Regulate {scores.regulate} · Restore {scores.restore}</p>
           )}
         </>)}
 
-        {screen === "guide" && (() => { const G = RESULT_GUIDES[topR]; const h3 = { fontFamily: "'Josefin Slab', serif", fontSize: 19, fontWeight: 700, color: C.navy, margin: "26px 0 10px" }; const li = { ...S.p, color: C.navy, marginBottom: 8 }; return (<>
-          <img className="twp-logo" src="/logo.png" alt="The Wholeness Place Wellness Co." style={{ display: "block", width: 180, maxWidth: "60%", height: "auto", margin: "32px auto 10px" }} />
-          <div style={{ ...S.script, fontSize: 48 }}>{R.name}</div>
-          <h1 style={{ ...S.h1, color: C.navy, fontSize: 28 }}>Your {R.name} Guide</h1>
-          <hr style={S.goldRule} />
-          <div className="twp-section"><h3 style={h3}>What your result means</h3>
-          <p style={{ ...S.p, color: C.navy }}>{G.means}</p></div>
-          <div className="twp-section"><h3 style={h3}>Signs you may notice</h3>
-          <ol style={{ paddingLeft: 22, margin: 0 }}>{G.signs.map((t) => <li key={t} style={li}>{t}</li>)}</ol></div>
-          <div className="twp-section"><h3 style={h3}>Three things to try this week</h3>
-          <ol style={{ paddingLeft: 22, margin: 0 }}>{G.tries.map((t) => <li key={t} style={li}>{t}</li>)}</ol></div>
-          <div className="twp-section" style={{ ...S.card, background: C.cream, margin: "26px 0 8px" }}><h3 style={{ ...h3, marginTop: 0 }}>How a session helps</h3>
-          <p style={{ ...S.p, color: C.navy, margin: 0 }}>{G.session}</p></div>
-          <p className="twp-print-only" style={{ ...S.p, display: "none", color: C.navy, marginTop: 24 }}>Book your session at thewholenessplace.com or email info@thewholenessplace.com.<br />349 Richmond Street, El Segundo, CA 90245</p>
+        {screen === "guide" && (() => {
+          const G = RESULT_GUIDES[topR];
+          const h3 = { fontFamily: "'Josefin Slab', serif", fontSize: 20, fontWeight: 700, color: C.navy, margin: "0 0 12px", display: "flex", alignItems: "center", gap: 10 };
+          const bar = { flex: 1, height: 1, background: C.gold, opacity: 0.6 };
+          const num = { flex: "0 0 26px", width: 26, height: 26, borderRadius: "50%", background: C.gold, color: "#fff", fontWeight: 700, fontSize: 14, display: "flex", alignItems: "center", justifyContent: "center", marginTop: 1 };
+          const row = { display: "flex", gap: 12, alignItems: "flex-start", marginBottom: 10 };
+          const txt = { ...S.p, color: C.navy, margin: 0 };
+          const List = ({ items }) => <div>{items.map((t, i) => <div key={t} className="twp-row" style={row}><span style={num}>{i + 1}</span><p style={txt}>{t}</p></div>)}</div>;
+          return (<>
+          <div className="twp-guide-head" style={{ background: `linear-gradient(180deg, ${C.lightBlue} 0%, ${C.ice} 55%, ${C.cream} 100%)`, borderRadius: 20, padding: "26px 18px 22px", margin: "24px 0 26px", textAlign: "center", border: `1px solid ${C.ice}` }}>
+            <img className="twp-logo" src="/logo.png" alt="The Wholeness Place Wellness Co." style={{ display: "block", width: 280, maxWidth: "85%", height: "auto", margin: "0 auto 14px" }} />
+            <div style={{ ...S.script, fontSize: 50, margin: "0 0 2px" }}>{R.name}</div>
+            <h1 style={{ ...S.h1, color: C.navy, fontSize: 28, margin: "0 0 6px" }}>Your {R.name} Guide</h1>
+            <hr style={{ ...S.goldRule, margin: "10px auto 0" }} />
+          </div>
+          <div className="twp-section" style={{ marginBottom: 24 }}><h3 style={h3}>What your result means<span style={bar} /></h3>
+            <p style={txt}>{G.means}</p></div>
+          <div className="twp-section" style={{ marginBottom: 24 }}><h3 style={h3}>Signs you may notice<span style={bar} /></h3>
+            <List items={G.signs} /></div>
+          <div className="twp-section" style={{ marginBottom: 24 }}><h3 style={h3}>Three things to try this week<span style={bar} /></h3>
+            <List items={G.tries} /></div>
+          <div className="twp-section" style={{ background: "#fff", border: `1px solid ${C.lightBlue}`, borderLeft: `5px solid ${C.gold}`, borderRadius: 16, padding: "18px 18px", marginBottom: 20 }}>
+            <h3 style={{ ...h3, marginBottom: 8 }}>How a session helps</h3>
+            <p style={txt}>{G.session}</p></div>
+          <div className="twp-print-only" style={{ display: "none", textAlign: "center", borderTop: `1px solid ${C.gold}`, paddingTop: 12 }}>
+            <p style={{ ...txt, fontSize: 14 }}>Book your session at thewholenessplace.com or email info@thewholenessplace.com.<br />349 Richmond Street, El Segundo, CA 90245</p>
+          </div>
           <div className="twp-noprint">
-            <button style={S.primary} onClick={() => go("how")}>Choose your session</button>
-            <button style={{ ...S.primary, background: "#fff", color: C.navy, border: `1px solid ${C.navy}` }} onClick={() => window.print()}>Save as PDF</button>
-            <p style={{ ...S.fine, textAlign: "center", marginTop: 8 }}>When the print window opens, choose Save as PDF.</p>
+            <button style={S.primary} onClick={() => window.print()}>Save as PDF</button>
+            <p style={{ ...S.fine, textAlign: "center", margin: "8px 0 4px" }}>When the print window opens, choose Save as PDF.</p>
+            <button style={{ ...S.primary, background: C.navy, color: C.cream }} onClick={() => go("how")}>Choose your session</button>
+            <div style={{ ...S.card, background: C.cream, borderColor: C.gold, marginTop: 26 }}>
+              <p style={{ ...S.p, fontWeight: 700, color: C.navy, marginBottom: 6 }}>Free ebook: <em>Coming Home to Yourself</em></p>
+              <p style={{ ...S.p, fontSize: 15, color: C.navy, marginBottom: 14 }}>Enter your email to get my free ebook.</p>
+              {!emailSent ? (<>
+                <input style={S.input} type="email" placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <button style={{ ...S.primary, marginTop: 0, background: C.navy, color: C.cream }} onClick={handleEmailSubmit}>Send me the ebook</button>
+              </>) : (
+                <p style={{ ...S.p, color: C.navy, fontWeight: 700, margin: 0 }}>Your ebook opened in a new tab.</p>
+              )}
+            </div>
             <button style={S.ghost} onClick={() => go("result")}>Back to my result</button>
           </div>
         </>); })()}
