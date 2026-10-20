@@ -238,7 +238,7 @@ export default function TWPQuiz() {
           <div className="twp-print-only" style={{ display: "none", textAlign: "center", borderTop: `1px solid ${C.gold}`, paddingTop: 12 }}>
             <p style={{ ...txt, fontSize: 14 }}>Book your session at thewholenessplace.com or email info@thewholenessplace.com.<br />349 Richmond Street, El Segundo, CA 90245</p>
           </div>
-          <p className="twp-copyright" style={{ ...S.fine, color: C.navy, textAlign: "center", margin: "14px 0 18px" }}>© {new Date().getFullYear()} The Wholeness Place Wellness Co. All rights reserved. This guide is for your personal use only. It may not be copied, shared, or sold without written permission.</p>
+          <p className="twp-copyright" style={{ ...S.fine, color: C.navy, textAlign: "center", margin: "14px 0 18px" }}>© {new Date().getFullYear()} The Wholeness Place Wellness Co. All rights reserved. This guide is for your personal use only. It may not be copied, shared, or sold without written permission. This guide is for general wellness education. It is not medical or mental health advice.</p>
           <div className="twp-noprint">
             <button style={S.primary} onClick={() => window.print()}>Save as PDF</button>
             <p style={{ ...S.fine, textAlign: "center", margin: "8px 0 4px" }}>When the print window opens, choose Save as PDF.</p>
