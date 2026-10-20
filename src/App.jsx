@@ -143,7 +143,7 @@ export default function TWPQuiz() {
     h2: { fontFamily: "'Josefin Slab', serif", fontSize: 24, lineHeight: 1.3, fontWeight: 700, margin: "0 0 20px", color: C.navy },
     p: { fontSize: 16, lineHeight: 1.65, fontWeight: 400, margin: "0 0 14px" },
     fine: { fontSize: 13.5, lineHeight: 1.5, fontWeight: 400, color: dark ? C.lightBlue : C.brown },
-    btn: { display: "block", width: "100%", textAlign: "left", background: "#fff", border: `1px solid ${C.sky}`, borderLeft: `4px solid ${C.sky}`, borderRadius: 14, padding: "16px 18px", fontSize: 15.5, fontFamily: "'Josefin Slab', serif", fontWeight: 700, color: C.navy, marginBottom: 12, cursor: "pointer" },
+    btn: { display: "block", width: "100%", textAlign: "left", background: "#fff", border: `1px solid ${C.sky}`, borderLeft: `4px solid ${C.sky}`, borderRadius: 14, padding: "16px 18px", fontSize: 18, fontFamily: "'Josefin Slab', serif", fontWeight: 700, color: C.navy, marginBottom: 12, cursor: "pointer" },
     primary: {
       display: "block", width: "100%", textAlign: "center",
       background: dark ? C.gold : C.navy,
@@ -170,7 +170,7 @@ export default function TWPQuiz() {
     <button onClick={onClick} style={{ ...S.btn, marginBottom: 10, borderColor: active ? C.gold : C.sky, borderLeftColor: active ? C.gold : C.sky, background: active ? "#fdf8f0" : "#fff" }}>
       {badge && <span style={{ display: "inline-block", whiteSpace: "nowrap", fontSize: 12, fontWeight: 700, letterSpacing: "0.04em", color: C.brown, background: "#f6ecdc", border: `1px solid ${C.gold}`, borderRadius: 20, padding: "3px 10px", marginBottom: 8 }}>{badge}</span>}
       <span style={{ fontWeight: 700, display: "block", color: C.navy }}>{label}</span>
-      {sub && <span style={{ fontSize: 15, fontWeight: 400, color: C.navy, display: "block", marginTop: 4, lineHeight: 1.45 }}>{sub}</span>}
+      {sub && <span style={{ fontSize: 16.5, fontWeight: 400, color: C.navy, display: "block", marginTop: 4, lineHeight: 1.45 }}>{sub}</span>}
     </button>
   );
 
@@ -204,7 +204,7 @@ export default function TWPQuiz() {
           <p style={S.p}>{R.body}</p>
 
           <button style={S.primary} onClick={() => go("how")}>Choose your session</button>
-          <p style={{ ...S.p, fontSize: 15, textAlign: "center", marginTop: 18 }}>Want to keep your results?{" "}
+          <p style={{ ...S.p, fontSize: 18, textAlign: "center", marginTop: 20 }}>Want to keep your results?{" "}
             <button onClick={() => go("guide")} style={{ background: "none", border: "none", padding: 0, font: "inherit", fontWeight: 700, color: C.lightBlue, textDecoration: "underline", cursor: "pointer" }}>Download your {R.name} guide (PDF)</button>
           </p>
           {isDebug && (
