@@ -64,7 +64,7 @@ export default function TWPQuiz() {
     l.href = "https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@300;400;700&family=Hurricane&display=swap";
     document.head.appendChild(l);
     const st = document.createElement("style");
-    st.textContent = "@media (min-width: 900px) { .twp-wrap { zoom: 1.3; } } @media (min-width: 1400px) { .twp-wrap { zoom: 1.45; } } @media print { @page { size: letter; margin: 0.5in; } .twp-wrap { zoom: 1 !important; max-width: none !important; } .twp-noprint { display: none !important; } .twp-app { background: #fff !important; padding: 0 !important; min-height: 0 !important; } .twp-print-only { display: block !important; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .twp-section { break-inside: avoid; } .twp-logo { width: 170px !important; margin: 0 auto 4px !important; } .twp-app p { font-size: 14.5px !important; } .twp-app h1 { font-size: 24px !important; } .twp-app h3 { font-size: 17px !important; margin-bottom: 8px !important; } .twp-guide-head { margin: 0 0 16px !important; padding: 14px 12px 12px !important; } .twp-section { margin-bottom: 12px !important; } .twp-row { margin-bottom: 6px !important; } .twp-app p { line-height: 1.45 !important; } }";
+    st.textContent = "@media (min-width: 900px) { .twp-wrap { zoom: 1.3; } .twp-wide { max-width: 640px !important; } .twp-wide p { font-size: 17.5px; } } @media (min-width: 1400px) { .twp-wrap { zoom: 1.45; } } @media print { @page { size: letter; margin: 0.5in; } .twp-wrap { zoom: 1 !important; max-width: none !important; } .twp-noprint { display: none !important; } .twp-app { background: #fff !important; padding: 0 !important; min-height: 0 !important; } .twp-print-only { display: block !important; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .twp-section { break-inside: avoid; } .twp-logo { width: 170px !important; margin: 0 auto 4px !important; } .twp-app p { font-size: 14.5px !important; } .twp-app h1 { font-size: 24px !important; } .twp-app h3 { font-size: 17px !important; margin-bottom: 8px !important; } .twp-guide-head { margin: 0 0 16px !important; padding: 14px 12px 12px !important; } .twp-section { margin-bottom: 12px !important; } .twp-row { margin-bottom: 6px !important; } .twp-app p.twp-copyright { font-size: 10.5px !important; margin: 8px 0 0 !important; } .twp-app p { line-height: 1.45 !important; } }";
     document.head.appendChild(st);
     return () => { document.head.removeChild(l); document.head.removeChild(st); };
   }, []);
@@ -173,7 +173,7 @@ export default function TWPQuiz() {
 
   return (
     <div className="twp-app" style={S.app}>
-      <div className="twp-wrap" style={S.wrap}>
+      <div className={screen === "guide" ? "twp-wrap twp-wide" : "twp-wrap"} style={S.wrap}>
 
         {screen === "welcome" && (<>
           <div style={{ ...S.eyebrow, fontSize: 15 }}>the wholeness place</div>
@@ -236,6 +236,7 @@ export default function TWPQuiz() {
           <div className="twp-print-only" style={{ display: "none", textAlign: "center", borderTop: `1px solid ${C.gold}`, paddingTop: 12 }}>
             <p style={{ ...txt, fontSize: 14 }}>Book your session at thewholenessplace.com or email info@thewholenessplace.com.<br />349 Richmond Street, El Segundo, CA 90245</p>
           </div>
+          <p className="twp-copyright" style={{ ...S.fine, color: C.navy, textAlign: "center", margin: "14px 0 18px" }}>© {new Date().getFullYear()} The Wholeness Place Wellness Co. All rights reserved. This guide is for your personal use only. It may not be copied, shared, or sold without written permission.</p>
           <div className="twp-noprint">
             <button style={S.primary} onClick={() => window.print()}>Save as PDF</button>
             <p style={{ ...S.fine, textAlign: "center", margin: "8px 0 4px" }}>When the print window opens, choose Save as PDF.</p>
